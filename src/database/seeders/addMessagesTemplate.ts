@@ -1,15 +1,22 @@
 import db from "../index";
 
 export async function addMessages(templates: string[]) {
-  const templateObjects = templates.map((template, index) => ({
-    id: index + 1,
-    template,
-  }));
-  return await db
-    .insertInto("messageTemplates")
-    .values(templateObjects)
-    .returningAll()
+  const existingData = await db
+    .selectFrom("messageTemplates")
+    .selectAll()
     .execute();
+  if (existingData.length === 0) {
+    const templateObjects = templates.map((template, index) => ({
+      id: index + 1,
+      template,
+    }));
+    return await db
+      .insertInto("messageTemplates")
+      .values(templateObjects)
+      .returningAll()
+      .execute();
+  }
+  console.log("Data already exists. Skipping data insertion.");
 }
 
 const messages = [

@@ -25,6 +25,7 @@ export interface MessageTemplates {
 
 export interface Sprints {
   id: Generated<number>;
+  sprintCode: string;
   sprintTitle: string;
 }
 
