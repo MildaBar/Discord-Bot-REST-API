@@ -17,7 +17,9 @@
   "scripts": {
     "test": "vitest",
     "dev": "tsnd --respawn src",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "gen:types": "kysely-codegen --camel-case --dialect sqlite --out-file src/database/types.ts",
+    "migrate:latest": "ts-node src/database/migrate/migrate.ts"
   },
   "author": "mildabar",
   "license": "ISC",
