@@ -1,18 +1,16 @@
 {
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "tests/**/*.ts"],
+
   "compilerOptions": {
-    "esModuleInterop": true,
     "composite": true,
-    "target": "ES2018",
-    "module": "commonjs",
-    "outDir": "./dist",
     "strict": true,
-    "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
       "@tests/*": ["./tests/*"]
     }
   },
-  "exclude": ["**/*.spec.ts", "**/*.test.ts", "tests/**/*.ts"],
+
   "references": [
     {
       "path": "./tsconfig.test.json"
