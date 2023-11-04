@@ -1,4 +1,5 @@
 import db from "../index";
+import { Kysely, SqliteDatabase } from "kysely";
 
 export async function addMessages(templates: string[]) {
   const existingData = await db

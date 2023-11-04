@@ -22,10 +22,10 @@ export default (db: Database) => ({
       .executeTakeFirst();
   },
 
-  create(message: RowInsert): Promise<RowSelect | undefined> {
+  create(template: RowInsert): Promise<RowSelect | undefined> {
     return db
       .insertInto(TABLE)
-      .values(message)
+      .values(template)
       .returning(keys)
       .executeTakeFirst();
   },

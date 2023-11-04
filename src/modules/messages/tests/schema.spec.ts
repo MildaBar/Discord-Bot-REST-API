@@ -1,5 +1,5 @@
 import { omit } from "lodash/fp";
-import { parse, parseInsertable, parseUpdateable } from "../schema";
+import { parse } from "../schema";
 import { messageFactory, messageFactoryFull } from "./utils";
 
 it("parses a valid record", () => {

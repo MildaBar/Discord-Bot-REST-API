@@ -21,9 +21,7 @@ export default (db: Database) => {
 
         return res.status(StatusCodes.OK).json(allMessages);
       } catch (error) {
-        return res
-          .status(StatusCodes.INTERNAL_SERVER_ERROR)
-          .json({ error: error.message });
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
       }
     })
   );

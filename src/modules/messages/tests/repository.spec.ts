@@ -5,10 +5,15 @@ import { messageFactory, messageMatcher } from "./utils";
 
 const db = await createTestDatabase();
 const repository = buildRepository(db);
-const createMessages = createFor(db, "message_templates");
-const selectMessage = selectAllFor(db, "message_templates");
+const createMessages = createFor(db, "messageTemplates");
+const selectMessages = selectAllFor(db, "messageTemplates");
 
 afterAll(() => db.destroy());
+
+afterEach(async () => {
+  // clearing the tested table after each test
+  await db.deleteFrom("messageTemplates").execute();
+});
 
 describe("findAll", () => {
   it("should return all messages", async () => {

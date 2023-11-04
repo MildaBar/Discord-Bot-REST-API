@@ -7,10 +7,7 @@ dotenv.config();
 
 const router = Router();
 const apiKey = process.env.GIPHY_API_KEY;
-const giphyApi = process.env.GIF_API_KEY;
-
-console.log("API Key:", apiKey);
-console.log("Giphy API:", giphyApi);
+const giphyApi: string = process.env.GIF_API_KEY || "";
 
 router.get("/random-gif", async (req: Request, res: Response) => {
   try {
@@ -27,9 +24,15 @@ router.get("/random-gif", async (req: Request, res: Response) => {
     const gifUrl = data.data[0].images.original.url;
     res.json({ gifUrl });
   } catch (error) {
-    return res
-      .status(500)
-      .json({ error: error.message || "Error getting movie." });
+    if (error instanceof Error) {
+      return res
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json({ error: error.message });
+    } else {
+      return res
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json({ error: "An unknown error occurred." });
+    }
   }
 });
 

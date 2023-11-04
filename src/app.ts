@@ -3,6 +3,7 @@ import express from "express";
 import { type Database } from "./database";
 import getGifs from "./modules/giphy/addGifs";
 import messageTemplates from "./modules/messages/controller";
+import templates from "./modules/templates/controller";
 
 export default function createApp(db: Database) {
   // initialize teh express application
@@ -13,7 +14,9 @@ export default function createApp(db: Database) {
 
   // app.use("/random-gif", getGifs);
 
-  app.use("/", messageTemplates(db));
+  app.use("/messages", messageTemplates(db));
+
+  app.use("/templates", templates(db));
 
   return app;
 }
