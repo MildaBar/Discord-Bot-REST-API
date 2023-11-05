@@ -1,7 +1,7 @@
 // enables us to create the server
 import express from "express";
 import { type Database } from "./database";
-import getGifs from "./modules/giphy/addGifs";
+import getGifs from "./modules/giphy/getGifUrl";
 import messageTemplates from "./modules/messages/controller";
 import templates from "./modules/templates/controller";
 import sprints from "./modules/sprints/controller";
@@ -13,7 +13,7 @@ export default function createApp(db: Database) {
   // middleware
   app.use(express.json());
 
-  // app.use("/random-gif", getGifs);
+  app.use("/random-gif", getGifs);
 
   app.use("/messages", messageTemplates(db));
 

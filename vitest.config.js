@@ -1,17 +1,9 @@
-/* eslint-disable */
-import path from "path";
+import { defineConfig } from "vitest/config";
 
-export default {
+export default defineConfig({
   test: {
-    globals: true,
     coverage: {
-      provider: "v8",
+      provider: "v8", // uses @bcoe/v8-coverage behind the scenes
     },
   },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-      "@tests": path.resolve(__dirname, "./tests"),
-    },
-  },
-};
+});

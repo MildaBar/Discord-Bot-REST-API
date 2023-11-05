@@ -22,6 +22,14 @@ export default (db: Database) => ({
       .executeTakeFirst();
   },
 
+  findByCode(code: string): Promise<RowSelect | undefined> {
+    return db
+      .selectFrom(TABLE)
+      .select(keys)
+      .where("sprintCode", "=", code)
+      .executeTakeFirst();
+  },
+
   create(sprint: RowInsert): Promise<RowSelect | undefined> {
     return db
       .insertInto(TABLE)
