@@ -1,6 +1,6 @@
 import type { Insertable, Selectable, Updateable } from "kysely";
 import { keys } from "./schema";
-import type { Sprints, Database, DB } from "@/database";
+import type { Sprints, Database } from "@/database";
 
 const TABLE = "sprints";
 type Row = Sprints;

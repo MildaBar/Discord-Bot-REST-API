@@ -1,6 +1,6 @@
 import { CamelCasePlugin, Kysely, SqliteDialect } from "kysely";
 import SQLite from "better-sqlite3";
-import { migrateToLatest } from "@/database/migrate";
+import { migrateToLatest } from "../../../src/database/migrate";
 import { type DB } from "@/database";
 import ModuleMigrationProvider from "./ModuleMigrationProvider";
 

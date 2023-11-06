@@ -13,6 +13,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -38,7 +39,9 @@
     "vitest": "^0.34.6"
   },
   "dependencies": {
+    "axios": "^1.6.0",
     "better-sqlite3": "^8.7.0",
+    "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "http-status-codes": "^2.3.0",

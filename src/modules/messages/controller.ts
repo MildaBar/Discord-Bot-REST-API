@@ -6,6 +6,13 @@ import { jsonRoute } from "@/utils/middleware";
 import getRandomMsg from "./utils/getRandomMsg";
 import getSprintTitle from "./utils/getSprintTitle";
 import getRandomGif from "./utils/getRandomGif";
+import getGifId from "../congratulatoryMessages/utils/getGifId";
+import getMsgId from "../congratulatoryMessages/utils/getMsgId";
+import getSprintsId from "../congratulatoryMessages/utils/getSprintsId";
+import getUsersId from "../congratulatoryMessages/utils/getUsersId";
+import insertCongratulatoryMessage from "../congratulatoryMessages/controller";
+
+import { sendCongratulatoryMessage } from "../../../discordBot";
 
 export default (db: Database) => {
   const router = Router();
@@ -32,7 +39,7 @@ export default (db: Database) => {
     )
     .post(async (req, res) => {
       try {
-        const { username, sprintCode } = req.body;
+        const { username, sprintCode, channelId } = req.body;
 
         const sprint = await getSprintTitle(sprintCode, db);
         const sprintTitle = sprint?.sprintTitle;
@@ -40,6 +47,31 @@ export default (db: Database) => {
         const gif = await getRandomGif();
 
         const congratulatoryMessage = `@${username} has just completed ${sprintTitle}! ${randomMessage} ${gif}`;
+
+        sendCongratulatoryMessage(channelId, congratulatoryMessage);
+
+        const gifIdPromise = getGifId(db, gif);
+        const msgIdPromise = getMsgId(db, randomMessage);
+        const sprintIdPromise = getSprintsId(db, sprintCode);
+        const userIdPromise = getUsersId(db, username);
+
+        const [gifId, msgId, sprintId, userId] = await Promise.all([
+          gifIdPromise,
+          msgIdPromise,
+          sprintIdPromise,
+          userIdPromise,
+        ]);
+
+        const currentDate = new Date();
+        const timestamp = currentDate.toISOString();
+        await insertCongratulatoryMessage(
+          gifId!,
+          msgId!,
+          sprintId!,
+          timestamp,
+          userId!,
+          db
+        );
 
         res.status(200).json({ congratulatoryMessage });
       } catch (error) {

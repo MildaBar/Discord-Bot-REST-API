@@ -22,6 +22,14 @@ export default (db: Database) => ({
       .executeTakeFirst();
   },
 
+  findByMsg(message: string): Promise<RowSelect | undefined> {
+    return db
+      .selectFrom(TABLE)
+      .select(keys)
+      .where("template", "=", message)
+      .executeTakeFirst();
+  },
+
   create(message: RowInsert): Promise<RowSelect | undefined> {
     return db
       .insertInto(TABLE)

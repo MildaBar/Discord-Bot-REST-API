@@ -14,19 +14,14 @@ client.on("ready", () => {
   console.log("bot is ready");
 });
 
-client.on("messageCreate", async (message) => {
-  if (message.content === "ping") {
-    message.reply({
-      content: "pong",
-    });
-  } else if (message.content === "quote") {
-    let resp = await axios.get(`https://api.quotable.io/random`);
-    const quote = resp.data.content;
+export const sendCongratulatoryMessage = (channelId, msg) => {
+  const channel = client.channels.cache.get(channelId);
 
-    message.reply({
-      content: quote,
-    });
+  if (channel) {
+    channel.send(msg);
+  } else {
+    console.error("Channel not found");
   }
-});
+};
 
 client.login(process.env.DISCORD_BOT_ID);
