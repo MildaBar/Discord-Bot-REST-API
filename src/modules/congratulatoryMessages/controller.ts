@@ -8,27 +8,24 @@ export default async function insertCongratulatoryMessage(
   timestamp: string,
   userId: number,
   db: Database
-) {
+): Promise<boolean> {
   const congratulatoryMsg = buildRepository(db);
 
-  // check if user already exists
-  const existingCongratulatoryMsg = await congratulatoryMsg.findAll();
-
-  if (!existingCongratulatoryMsg) {
-    try {
-      await congratulatoryMsg.create({
-        gifId,
-        messageTemplateId,
-        sprintId,
-        timestamp,
-        userId,
-      });
-      console.log("CONGRATULATORY MESSAGE data appended successfully.");
-    } catch (error) {
-      console.error(
-        "An error occurred while appending CONGRATULATORY MESSAGE data:",
-        error
-      );
-    }
+  try {
+    await congratulatoryMsg.create({
+      gifId,
+      messageTemplateId,
+      sprintId,
+      timestamp,
+      userId,
+    });
+    console.log("CONGRATULATORY MESSAGE data appended successfully.");
+    return true;
+  } catch (error) {
+    console.error(
+      "An error occurred while appending CONGRATULATORY MESSAGE data:",
+      error
+    );
+    return false;
   }
 }

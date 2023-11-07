@@ -4,11 +4,16 @@ import buildRepository from "../../gifs/repository";
 export default async function getGif(db: Database, gifUrl: string) {
   const gifRepo = buildRepository(db, gifUrl);
 
-  const gifs = await gifRepo.findUrl(gifUrl);
+  let gifId = null;
 
-  if (!gifs) {
-    await gifRepo.create({ gifUrl });
+  const gifData = await gifRepo.findUrl(gifUrl);
+
+  if (!gifData) {
+    const createGif = await gifRepo.create({ gifUrl });
+    gifId = createGif?.id;
+  } else {
+    gifId = gifData.id;
   }
 
-  return gifs?.id;
+  return gifId;
 }
