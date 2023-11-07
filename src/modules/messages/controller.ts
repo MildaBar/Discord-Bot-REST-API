@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
-import buildRepository from "./repository";
+import buildMsgRepository from "./repository";
+import buildUsersRepository from "../users/repository";
+import buildUsersMsgRepository from "../congratulatoryMessages/repository";
 import { Database } from "@/database";
 import { jsonRoute } from "@/utils/middleware";
 import getRandomMsg from "./utils/getRandomMsg";
@@ -16,22 +18,50 @@ import { sendCongratulatoryMessage } from "../../../discordBot";
 
 export default (db: Database) => {
   const router = Router();
-  const messages = buildRepository(db);
+  const messages = buildMsgRepository(db);
 
   router
     .route("/")
     .get(
       jsonRoute(async (req, res) => {
         try {
-          const allMessages = await messages.findAll();
+          const username = req.query.username as string;
+          const users = buildUsersRepository(db, username);
+          const usersMsg = buildUsersMsgRepository(db);
+          if (username) {
+            const userData = await users.findUser(username);
+            const userId = userData?.id;
 
-          if (!allMessages) {
-            return res
-              .status(StatusCodes.NOT_FOUND)
-              .json({ error: "Messages not found" });
+            const userMsgData = await usersMsg.finduserId(userId || 0);
+
+            if (!userMsgData) {
+              return res
+                .status(StatusCodes.NOT_FOUND)
+                .json({ error: "No messages found for the specified user." });
+            }
+
+            const userMsgId = userMsgData.map((msg) => msg.messageTemplateId);
+
+            const userMsgPromises = userMsgId.map((id) =>
+              messages.findById(id)
+            );
+
+            const userMsg = (await Promise.all(userMsgPromises))
+              .filter((message) => message !== undefined)
+              .map((message) => message!.template);
+
+            return res.status(StatusCodes.OK).json({ messages: userMsg });
+          } else {
+            const allMessages = await messages.findAll();
+
+            if (!allMessages) {
+              return res
+                .status(StatusCodes.NOT_FOUND)
+                .json({ error: "Messages not found" });
+            }
+
+            return res.status(StatusCodes.OK).json(allMessages);
           }
-
-          return res.status(StatusCodes.OK).json(allMessages);
         } catch (error) {
           return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
         }
@@ -117,6 +147,33 @@ export default (db: Database) => {
         res.status(500).json({ error: "Internal server error" });
       }
     });
+
+  // router.get("/messages", async (req, res) => {
+  //   try {
+  //     const username = req.query.username as string;
+  //     const users = buildUsersRepository(db, username);
+
+  //     if (!username) {
+  //       return res
+  //         .status(StatusCodes.BAD_REQUEST)
+  //         .json({ error: "Username is required." });
+  //     }
+
+  //     const userMsg = await users.findUser(username);
+
+  //     if (!userMsg) {
+  //       return res
+  //         .status(StatusCodes.NOT_FOUND)
+  //         .json({ error: "No messages found for the specified user." });
+  //     }
+  //     return res.status(StatusCodes.OK).json({ messages: userMsg });
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //     return res
+  //       .status(StatusCodes.INTERNAL_SERVER_ERROR)
+  //       .json({ error: "Internal server error." });
+  //   }
+  // });
 
   return router;
 };
