@@ -8,7 +8,6 @@ const apiKey = process.env.GIPHY_API_KEY;
 const giphyBaseUrl: string = "https://api.giphy.com/v1/gifs";
 const searchEndpoint: string = "/search";
 const limit: number = 1;
-const offset: number = 0;
 const rating: string = "g";
 const lang: string = "en";
 const bundle: string = "messaging_non_clips";
@@ -25,13 +24,16 @@ export default async function extractGifUrl() {
       throw new Error("Provide GIPHY API key in your environment variables");
     }
 
-    // get different gif with random search term
+    // get random search term
     const searchTerm: string =
       searchTerms[Math.floor(Math.random() * searchTerms.length)];
 
+    // get random offset
+    const randomOffset = Math.floor(Math.random() * 50);
+
     // giphy url
     const response = await fetch(
-      `${giphyBaseUrl}${searchEndpoint}?api_key=${apiKey}&q=${searchTerm}&limit=${limit}&offset=${offset}&rating=${rating}&lang=${lang}&bundle=${bundle}`
+      `${giphyBaseUrl}${searchEndpoint}?api_key=${apiKey}&q=${searchTerm}&limit=${limit}&offset=${randomOffset}&rating=${rating}&lang=${lang}&bundle=${bundle}`
     );
 
     // gif data
@@ -49,13 +51,13 @@ export default async function extractGifUrl() {
   }
 }
 
-async function getGif() {
-  try {
-    const gifUrl = await extractGifUrl();
-    return gifUrl;
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
+// async function getGif() {
+//   try {
+//     const gifUrl = await extractGifUrl();
+//     return gifUrl;
+//   } catch (error) {
+//     console.error("Error:", error);
+//   }
+// }
 
-const gif = getGif();
+// const gif = getGif();

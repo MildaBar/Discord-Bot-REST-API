@@ -1,6 +1,5 @@
-import { omit } from "lodash/fp";
 import { parse } from "../schema";
-import { messageFactory, messageFactoryFull } from "./utils";
+import { messageFactoryFull } from "./utils";
 
 it("parses a valid record", () => {
   const record = messageFactoryFull();

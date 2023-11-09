@@ -5,15 +5,15 @@ import type { Sprints } from "@/database";
 export const sprintFactory = (
   overrides: Partial<Insertable<Sprints>> = {}
 ): Insertable<Sprints> => ({
-  id: 1,
-  sprintTitle: "First Steps Into Programming with Python: Project",
-  sprintCode: "WD-1.1",
+  sprintCode: "WD-3.1",
+  sprintTitle: "Node.js and Relational Databases",
+  ...overrides,
 });
 
 export const sprintMatcher = (
   overrides: Partial<Insertable<Sprints>> = {}
 ) => ({
-  id: 1,
+  id: expect.any(Number),
   ...overrides,
   ...sprintFactory(overrides),
 });

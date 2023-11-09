@@ -1,14 +1,13 @@
 import supertest from "supertest";
 import createTestDatabase from "@tests/utils/createTestDatabase";
 import { createFor } from "@tests/utils/records";
-import { omit } from "lodash/fp";
 import { messageFactory, messageMatcher } from "./utils";
 import createApp from "@/app";
 
 const db = await createTestDatabase();
 const app = createApp(db);
 
-const createMessages = createFor(db, "messageTemplates");
+const createMessagesRecords = createFor(db, "messageTemplates");
 
 afterEach(async () => {
   // clear the tested table after each test
@@ -20,7 +19,7 @@ afterAll(() => db.destroy());
 
 describe("GET", () => {
   it("should return a list of existing articles", async () => {
-    await createMessages([
+    await createMessagesRecords([
       messageFactory(),
       messageFactory({
         template: "Impressive work! Well done!👏",
@@ -52,7 +51,7 @@ describe("POST", () => {
 describe("PATCH", () => {
   it("persists changes", async () => {
     const id = 1;
-    await createMessages([messageFactory({ id })]);
+    await createMessagesRecords([messageFactory({ id })]);
 
     const patchResponse = await supertest(app)
       .patch("/templates")

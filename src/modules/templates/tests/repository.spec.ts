@@ -5,7 +5,7 @@ import { messageFactory, messageMatcher } from "./utils";
 
 const db = await createTestDatabase();
 const repository = buildRepository(db);
-const createMessages = createFor(db, "messageTemplates");
+const createMessagesRecords = createFor(db, "messageTemplates");
 const selectMessages = selectAllFor(db, "messageTemplates");
 
 afterAll(() => db.destroy());
@@ -17,7 +17,7 @@ afterEach(async () => {
 
 describe("findById", () => {
   it("should return a message by id", async () => {
-    const [message] = await createMessages(
+    const [message] = await createMessagesRecords(
       messageFactory({
         id: 1,
       })
@@ -47,7 +47,7 @@ describe("create", () => {
 
 describe("update", () => {
   it("should update the message", async () => {
-    const [message] = await createMessages(messageFactory());
+    const [message] = await createMessagesRecords(messageFactory());
 
     const updateMessage = await repository.update(message.id, {
       template: "template 1",
@@ -63,7 +63,7 @@ describe("update", () => {
 
 describe("remove", () => {
   it("should remove a message", async () => {
-    const [message] = await createMessages(messageFactory());
+    const [message] = await createMessagesRecords(messageFactory());
 
     const removeMessage = await repository.remove(message.id);
 

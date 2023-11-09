@@ -1,15 +1,8 @@
 import type { Insertable, Selectable } from "kysely";
 import { keys } from "./schema";
-import type {
-  CongratulatoryMessages,
-  MessageTemplates,
-  Database,
-  Users,
-} from "@/database";
+import type { CongratulatoryMessages, Database } from "@/database";
 
 const TABLE = "congratulatoryMessages";
-const TEMPLATE_TABLE = "messageTemplates";
-const USER_TABLE = "users";
 
 type Row = CongratulatoryMessages;
 type RowWithoutId = Omit<Row, "id">;

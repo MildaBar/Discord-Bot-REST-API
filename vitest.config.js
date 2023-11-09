@@ -3,6 +3,7 @@ import path from "path";
 
 export default {
   test: {
+    reporters: ["verbose"],
     globals: true,
     coverage: {
       provider: "v8",

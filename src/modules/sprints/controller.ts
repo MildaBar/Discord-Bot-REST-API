@@ -32,8 +32,21 @@ export default (db: Database) => {
     .post(
       jsonRoute(async (req, res) => {
         const body = schema.parseInsertable(req.body);
-        return sprint.create(body);
-      }, StatusCodes.CREATED)
+
+        if (!body || body.sprintCode.trim().length === 0) {
+          return res
+            .status(400)
+            .json({ error: "Invalid request. Provide all the required data." });
+        }
+
+        try {
+          const result = await sprint.create(body);
+          return res.status(StatusCodes.CREATED).json(result);
+        } catch (error) {
+          console.error("Error occurred during sprint creation:", error);
+          return res.status(500).json({ error: "Internal Server Error." });
+        }
+      })
     )
     .patch(
       jsonRoute(async (req, res) => {

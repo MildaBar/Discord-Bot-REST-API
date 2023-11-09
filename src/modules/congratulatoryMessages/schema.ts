@@ -14,8 +14,22 @@ const schema = z.object({
 const insertable = schema.omit({ id: true });
 const updateable = insertable.partial();
 
-export const parse = (md: unknown) => schema.parse(md);
+export const parse = (md: unknown) => {
+  const parseCongratulatoryMsg = schema.parse(md);
 
+  if (
+    !parseCongratulatoryMsg.gifId ||
+    !parseCongratulatoryMsg.messageTemplateId ||
+    !parseCongratulatoryMsg.sprintId ||
+    !parseCongratulatoryMsg.userId ||
+    parseCongratulatoryMsg.timestamp.trim().length === 0
+  ) {
+    throw new Error(
+      "All congratulatoryMessages tables columns need to be provided"
+    );
+  }
+  return parseCongratulatoryMsg;
+};
 export const parseInsertable = (md: unknown) => insertable.parse(md);
 
 export const keys: (keyof msgData)[] = Object.keys(

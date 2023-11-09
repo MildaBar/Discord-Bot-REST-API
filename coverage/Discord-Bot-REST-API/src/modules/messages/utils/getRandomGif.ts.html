@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.24% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>52/61</span>
+                <span class='fraction'>56/63</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.24% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>52/61</span>
+                <span class='fraction'>56/63</span>
             </div>
         
             
@@ -124,8 +124,9 @@
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -164,24 +165,27 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -195,7 +199,6 @@ const apiKey = process.env.GIPHY_API_KEY;
 const giphyBaseUrl: string = "https://api.giphy.com/v1/gifs";
 const searchEndpoint: string = "/search";
 const limit: number = 1;
-const offset: number = 0;
 const rating: string = "g";
 const lang: string = "en";
 const bundle: string = "messaging_non_clips";
@@ -212,13 +215,16 @@ export default async function extractGifUrl() {
 <span class="cstat-no" title="statement not covered" >      throw new Error("Provide GIPHY API key in your environment variables");</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 &nbsp;
-    // get different gif with random search term
+    // get random search term
     const searchTerm: string =
       searchTerms[Math.floor(Math.random() * searchTerms.length)];
 &nbsp;
+    // get random offset
+    const randomOffset = Math.floor(Math.random() * 50);
+&nbsp;
     // giphy url
     const response = await fetch(
-      `${giphyBaseUrl}${searchEndpoint}?api_key=${apiKey}&amp;q=${searchTerm}&amp;limit=${limit}&amp;offset=${offset}&amp;rating=${rating}&amp;lang=${lang}&amp;bundle=${bundle}`
+      `${giphyBaseUrl}${searchEndpoint}?api_key=${apiKey}&amp;q=${searchTerm}&amp;limit=${limit}&amp;offset=${randomOffset}&amp;rating=${rating}&amp;lang=${lang}&amp;bundle=${bundle}`
     );
 &nbsp;
     // gif data
@@ -236,16 +242,16 @@ export default async function extractGifUrl() {
 <span class="cstat-no" title="statement not covered" >  }</span>
 }
 &nbsp;
-async function getGif() {
-  try {
-    const gifUrl = await extractGifUrl();
-    return gifUrl;
-<span class="branch-0 cbranch-no" title="branch not covered" >  } catch (error) {</span>
-<span class="cstat-no" title="statement not covered" >    console.error("Error:", error);</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-}
+// async function getGif() {
+//   try {
+//     const gifUrl = await extractGifUrl();
+//     return gifUrl;
+//   } catch (error) {
+//     console.error("Error:", error);
+//   }
+// }
 &nbsp;
-const gif = getGif();
+// const gif = getGif();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -253,7 +259,7 @@ const gif = getGif();
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-06T11:48:52.912Z
+                at 2023-11-08T20:16:43.494Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
