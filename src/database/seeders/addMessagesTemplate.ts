@@ -1,7 +1,19 @@
 import db from "../index";
+import { Database } from "@/database";
 import { Kysely, SqliteDatabase } from "kysely";
+import createDatabase from "@/database/index";
 
-export async function addMessages(templates: string[]) {
+require("dotenv").config();
+
+const DATABASE = process.env.DATABASE_URL;
+
+if (!DATABASE) {
+  throw new Error("No DATABASE_URL provided in the environment variables");
+}
+
+const DB = createDatabase(DATABASE);
+
+export async function addMessages(templates: string[], db: Database) {
   const existingData = await db
     .selectFrom("messageTemplates")
     .selectAll()
@@ -42,6 +54,6 @@ const messages = [
   "Fantastic job on your accomplishment! You're on the right path!🤩",
 ];
 
-addMessages(messages)
+addMessages(messages, DB)
   .then(() => console.log("Data inserted successfully."))
   .catch((error) => console.error("Error inserting data:", error));

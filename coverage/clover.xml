@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1699474616011" clover="3.2.0">
-  <project timestamp="1699474616014" name="All files">
-    <metrics statements="1288" coveredstatements="954" conditionals="108" coveredconditionals="91" methods="79" coveredmethods="55" elements="1475" coveredelements="1100" complexity="0" loc="1288" ncloc="1288" packages="20" files="37" classes="37"/>
+<coverage generated="1699538049411" clover="3.2.0">
+  <project timestamp="1699538049413" name="All files">
+    <metrics statements="1320" coveredstatements="994" conditionals="111" coveredconditionals="94" methods="83" coveredmethods="58" elements="1514" coveredelements="1146" complexity="0" loc="1320" ncloc="1320" packages="20" files="38" classes="38"/>
     <package name="Discord-Bot-REST-API">
       <metrics statements="33" coveredstatements="19" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="0"/>
       <file name="discordBot.js" path="/mnt/c/Users/stani/OneDrive/Desktop/Turing College/Module 3/Sprint 2/Part-5/Discord-Bot-REST-API/discordBot.js">
@@ -19,7 +19,7 @@
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="14" count="2" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
@@ -79,14 +79,14 @@
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="20" type="stmt"/>
-        <line num="6" count="20" type="stmt"/>
-        <line num="7" count="20" type="stmt"/>
-        <line num="8" count="20" type="stmt"/>
-        <line num="9" count="20" type="stmt"/>
-        <line num="10" count="20" type="stmt"/>
-        <line num="11" count="20" type="stmt"/>
+        <line num="4" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="21" type="stmt"/>
+        <line num="6" count="21" type="stmt"/>
+        <line num="7" count="21" type="stmt"/>
+        <line num="8" count="21" type="stmt"/>
+        <line num="9" count="21" type="stmt"/>
+        <line num="10" count="21" type="stmt"/>
+        <line num="11" count="21" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
@@ -101,65 +101,65 @@
         <metrics statements="50" coveredstatements="50" conditionals="15" coveredconditionals="15" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="3" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="20" type="stmt"/>
-        <line num="5" count="20" type="stmt"/>
-        <line num="6" count="20" type="stmt"/>
-        <line num="7" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="9" count="20" type="stmt"/>
-        <line num="10" count="20" type="stmt"/>
-        <line num="11" count="20" type="stmt"/>
-        <line num="12" count="20" type="stmt"/>
-        <line num="13" count="20" type="stmt"/>
-        <line num="14" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="16" count="20" type="stmt"/>
-        <line num="17" count="20" type="stmt"/>
-        <line num="18" count="20" type="stmt"/>
-        <line num="19" count="20" type="stmt"/>
-        <line num="20" count="20" type="stmt"/>
-        <line num="21" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="22" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="23" count="20" type="stmt"/>
-        <line num="24" count="20" type="stmt"/>
-        <line num="25" count="20" type="stmt"/>
-        <line num="26" count="20" type="stmt"/>
-        <line num="27" count="20" type="stmt"/>
-        <line num="28" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="29" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="30" count="20" type="stmt"/>
-        <line num="31" count="20" type="stmt"/>
-        <line num="32" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="33" count="20" type="stmt"/>
-        <line num="34" count="20" type="stmt"/>
-        <line num="35" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="36" count="20" type="stmt"/>
-        <line num="37" count="20" type="stmt"/>
-        <line num="38" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="39" count="20" type="stmt"/>
-        <line num="40" count="20" type="stmt"/>
-        <line num="41" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="42" count="20" type="stmt"/>
-        <line num="43" count="20" type="stmt"/>
-        <line num="44" count="20" type="stmt"/>
-        <line num="45" count="20" type="stmt"/>
-        <line num="46" count="20" type="stmt"/>
-        <line num="47" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="48" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="49" count="20" type="stmt"/>
-        <line num="50" count="20" type="stmt"/>
+        <line num="3" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="21" type="stmt"/>
+        <line num="5" count="21" type="stmt"/>
+        <line num="6" count="21" type="stmt"/>
+        <line num="7" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="21" type="stmt"/>
+        <line num="10" count="21" type="stmt"/>
+        <line num="11" count="21" type="stmt"/>
+        <line num="12" count="21" type="stmt"/>
+        <line num="13" count="21" type="stmt"/>
+        <line num="14" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="21" type="stmt"/>
+        <line num="17" count="21" type="stmt"/>
+        <line num="18" count="21" type="stmt"/>
+        <line num="19" count="21" type="stmt"/>
+        <line num="20" count="21" type="stmt"/>
+        <line num="21" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="21" type="stmt"/>
+        <line num="24" count="21" type="stmt"/>
+        <line num="25" count="21" type="stmt"/>
+        <line num="26" count="21" type="stmt"/>
+        <line num="27" count="21" type="stmt"/>
+        <line num="28" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="30" count="21" type="stmt"/>
+        <line num="31" count="21" type="stmt"/>
+        <line num="32" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="33" count="21" type="stmt"/>
+        <line num="34" count="21" type="stmt"/>
+        <line num="35" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="36" count="21" type="stmt"/>
+        <line num="37" count="21" type="stmt"/>
+        <line num="38" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="39" count="21" type="stmt"/>
+        <line num="40" count="21" type="stmt"/>
+        <line num="41" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="42" count="21" type="stmt"/>
+        <line num="43" count="21" type="stmt"/>
+        <line num="44" count="21" type="stmt"/>
+        <line num="45" count="21" type="stmt"/>
+        <line num="46" count="21" type="stmt"/>
+        <line num="47" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="48" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="49" count="21" type="stmt"/>
+        <line num="50" count="21" type="stmt"/>
       </file>
       <file name="20231101214320-addSprintCodeColumn.ts" path="/mnt/c/Users/stani/OneDrive/Desktop/Turing College/Module 3/Sprint 2/Part-5/Discord-Bot-REST-API/src/database/migrations/20231101214320-addSprintCodeColumn.ts">
         <metrics statements="12" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="3" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="20" type="stmt"/>
-        <line num="5" count="20" type="stmt"/>
-        <line num="6" count="20" type="cond" truecount="1" falsecount="0"/>
-        <line num="7" count="20" type="stmt"/>
-        <line num="8" count="20" type="stmt"/>
+        <line num="3" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="21" type="stmt"/>
+        <line num="5" count="21" type="stmt"/>
+        <line num="6" count="21" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="21" type="stmt"/>
+        <line num="8" count="21" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
@@ -167,7 +167,7 @@
       </file>
     </package>
     <package name="Discord-Bot-REST-API.src.modules.congratulatoryMessages">
-      <metrics statements="119" coveredstatements="55" conditionals="7" coveredconditionals="6" methods="4" coveredmethods="1"/>
+      <metrics statements="112" coveredstatements="56" conditionals="9" coveredconditionals="8" methods="7" coveredmethods="3"/>
       <file name="controller.ts" path="/mnt/c/Users/stani/OneDrive/Desktop/Turing College/Module 3/Sprint 2/Part-5/Discord-Bot-REST-API/src/modules/congratulatoryMessages/controller.ts">
         <metrics statements="31" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -203,7 +203,7 @@
         <line num="31" count="0" type="stmt"/>
       </file>
       <file name="repository.ts" path="/mnt/c/Users/stani/OneDrive/Desktop/Turing College/Module 3/Sprint 2/Part-5/Discord-Bot-REST-API/src/modules/congratulatoryMessages/repository.ts">
-        <metrics statements="51" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="44" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -215,20 +215,20 @@
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
@@ -247,14 +247,7 @@
         <line num="41" count="0" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
       </file>
       <file name="schema.ts" path="/mnt/c/Users/stani/OneDrive/Desktop/Turing College/Module 3/Sprint 2/Part-5/Discord-Bot-REST-API/src/modules/congratulatoryMessages/schema.ts">
         <metrics statements="37" coveredstatements="33" conditionals="7" coveredconditionals="6" methods="2" coveredmethods="1"/>
@@ -298,7 +291,49 @@
       </file>
     </package>
     <package name="Discord-Bot-REST-API.src.modules.congratulatoryMessages.tests">
-      <metrics statements="30" coveredstatements="24" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
+      <metrics statements="69" coveredstatements="63" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="3"/>
+      <file name="repositoryTestSetup.ts" path="/mnt/c/Users/stani/OneDrive/Desktop/Turing College/Module 3/Sprint 2/Part-5/Discord-Bot-REST-API/src/modules/congratulatoryMessages/tests/repositoryTestSetup.ts">
+        <metrics statements="39" coveredstatements="39" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+      </file>
       <file name="utils.ts" path="/mnt/c/Users/stani/OneDrive/Desktop/Turing College/Module 3/Sprint 2/Part-5/Discord-Bot-REST-API/src/modules/congratulatoryMessages/tests/utils.ts">
         <metrics statements="30" coveredstatements="24" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
@@ -306,16 +341,16 @@
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="18" count="1" type="stmt"/>
@@ -469,11 +504,11 @@
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
@@ -1135,12 +1170,12 @@
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="19" type="stmt"/>
-        <line num="7" count="19" type="stmt"/>
-        <line num="8" count="19" type="stmt"/>
-        <line num="9" count="19" type="stmt"/>
-        <line num="10" count="19" type="stmt"/>
-        <line num="11" count="19" type="stmt"/>
+        <line num="6" count="20" type="stmt"/>
+        <line num="7" count="20" type="stmt"/>
+        <line num="8" count="20" type="stmt"/>
+        <line num="9" count="20" type="stmt"/>
+        <line num="10" count="20" type="stmt"/>
+        <line num="11" count="20" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="14" count="8" type="stmt"/>
@@ -1320,11 +1355,11 @@
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="14" type="stmt"/>
-        <line num="7" count="14" type="stmt"/>
-        <line num="8" count="14" type="stmt"/>
-        <line num="9" count="14" type="stmt"/>
-        <line num="10" count="14" type="stmt"/>
+        <line num="6" count="15" type="stmt"/>
+        <line num="7" count="15" type="stmt"/>
+        <line num="8" count="15" type="stmt"/>
+        <line num="9" count="15" type="stmt"/>
+        <line num="10" count="15" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
@@ -1408,11 +1443,11 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>

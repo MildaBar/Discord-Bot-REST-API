@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Discord-Bot-REST-API/src/modules/templates/schema.ts</title>
+    <title>Code coverage report for Discord-Bot-REST-API/src/modules/congratulatoryMessages/tests/repositoryTestSetup.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">Discord-Bot-REST-API/src/modules/templates</a> schema.ts</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">Discord-Bot-REST-API/src/modules/congratulatoryMessages/tests</a> repositoryTestSetup.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>26/32</span>
+                <span class='fraction'>39/39</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/32</span>
+                <span class='fraction'>39/39</span>
             </div>
         
             
@@ -95,7 +95,14 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -111,12 +118,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -127,38 +128,58 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { z } from "zod";
-import type { MessageTemplates } from "@/database";
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createFor } from "@tests/utils/records";
+import { usersFactory } from "@/modules/users/tests/utils";
+import { gifFactory } from "@/modules/gifs/tests/utils";
+import { messageFactory } from "@/modules/templates/tests/utils";
+import { sprintFactory } from "@/modules/sprints/tests/utils";
 &nbsp;
-type Message = MessageTemplates;
-const schema = z.object({
-  id: z.coerce.number().int().positive(),
-  template: z.string(),
-});
+export const repositoryTestSetup = async (db) =&gt; {
+  const createUsersRecords = createFor(db, "users");
+  const createGifsRecords = createFor(db, "gifs");
+  const createMessageTemplateRecords = createFor(db, "messageTemplates");
+  const createSprintsRecords = createFor(db, "sprints");
 &nbsp;
-// schema version for inserting new messages
-const insertable = schema.omit({ id: true });
+  await createUsersRecords([
+    usersFactory({
+      username: "johdoe",
+    }),
+  ]);
+  console.log("Creating users records...");
 &nbsp;
-// schema version for updating existing messages
-const updateable = insertable.partial();
+  await createGifsRecords([
+    gifFactory({
+      gifUrl: "test url",
+    }),
+  ]);
 &nbsp;
-export const parse = <span class="fstat-no" title="function not covered" >(temp: unknown) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const parsedTemplate = schema.parse(temp);</span>
-<span class="cstat-no" title="statement not covered" >  if (parsedTemplate.template.trim().length === 0) {</span>
-<span class="cstat-no" title="statement not covered" >    throw new Error("Template cannot be empty.");</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-<span class="cstat-no" title="statement not covered" >  return parsedTemplate;</span>
-<span class="cstat-no" title="statement not covered" >};</span>
+  await createSprintsRecords([
+    sprintFactory({
+      sprintCode: "WD-3.1",
+      sprintTitle: "Node.js and Relational Databases",
+    }),
+  ]);
 &nbsp;
-export const parseInsertable = (temp: unknown) =&gt; insertable.parse(temp);
-&nbsp;
-export const parseId = (id: unknown) =&gt; schema.shape.id.parse(id);
-&nbsp;
-export const parseUpdateable = (temp: unknown) =&gt; updateable.parse(temp);
-&nbsp;
-export const keys: (keyof Message)[] = Object.keys(
-  schema.shape
-) as (keyof z.infer&lt;typeof schema&gt;)[];
+  await createMessageTemplateRecords([
+    messageFactory({
+      template: "Impressive work! Well done!👏",
+    }),
+  ]);
+  console.log("Creating createMessageTemplateRecords records...");
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -168,14 +189,14 @@ export const keys: (keyof Message)[] = Object.keys(
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
                 at 2023-11-09T13:53:49.765Z
             </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="../../../../../sorter.js"></script>
+        <script src="../../../../../block-navigation.js"></script>
     </body>
 </html>
     

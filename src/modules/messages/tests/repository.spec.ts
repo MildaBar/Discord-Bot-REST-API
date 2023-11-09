@@ -39,3 +39,38 @@ describe("findAll", () => {
     );
   });
 });
+
+describe("findById", () => {
+  it("should return messages based on id", async () => {
+    await createMessages([
+      messageFactory({
+        id: 1,
+        template: "template 1",
+      }),
+    ]);
+
+    const msgId = 1;
+    const messages = await repository.findById(msgId);
+
+    expect(messages).toEqual(messageMatcher({ id: 1, template: "template 1" }));
+  });
+});
+
+describe("findByMsg", () => {
+  it("should return message template data based on message", async () => {
+    await createMessages([
+      messageFactory({
+        id: 1,
+        template: "template 1",
+      }),
+      messageFactory({
+        id: 2,
+        template: "template 2",
+      }),
+    ]);
+
+    const msg = "template 1";
+    const messages = await repository.findByMsg(msg);
+    expect(messages).toEqual(messageMatcher({ id: 1, template: "template 1" }));
+  });
+});

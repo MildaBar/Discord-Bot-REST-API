@@ -25,7 +25,7 @@ export default (db: Database) => {
       jsonRoute(async (req, res) => {
         try {
           const username = req.query.username as string;
-          username;
+          // username;
 
           if (!username) {
             return res

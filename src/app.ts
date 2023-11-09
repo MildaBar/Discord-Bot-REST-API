@@ -7,7 +7,7 @@ import templates from "./modules/templates/controller";
 import sprints from "./modules/sprints/controller";
 
 export default function createApp(db: Database) {
-  // initialize teh express application
+  // initialize the express application
   const app = express();
 
   // middleware

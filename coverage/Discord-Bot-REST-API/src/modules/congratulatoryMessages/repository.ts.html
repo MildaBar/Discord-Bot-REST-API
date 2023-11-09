@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.25% </span>
+                <span class="strong">45.45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/51</span>
+                <span class='fraction'>20/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.25% </span>
+                <span class="strong">45.45% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>19/51</span>
+                <span class='fraction'>20/44</span>
             </div>
         
             
@@ -107,14 +107,7 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -131,6 +124,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -151,52 +150,32 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type { Insertable, Selectable } from "kysely";
 import { keys } from "./schema";
-import type {
-  CongratulatoryMessages,
-  MessageTemplates,
-  Database,
-  Users,
-} from "@/database";
+import type { CongratulatoryMessages, Database } from "@/database";
 &nbsp;
 const TABLE = "congratulatoryMessages";
-const TEMPLATE_TABLE = "messageTemplates";
-const USER_TABLE = "users";
 &nbsp;
 type Row = CongratulatoryMessages;
 type RowWithoutId = Omit&lt;Row, "id"&gt;;
 type RowInsert = Insertable&lt;RowWithoutId&gt;;
 type RowSelect = Selectable&lt;Row&gt;;
 &nbsp;
-export default <span class="fstat-no" title="function not covered" >(db: Database) =&gt; ({</span>
-<span class="cstat-no" title="statement not covered" >  findAll(): Promise&lt;RowSelect[]&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return db.selectFrom(TABLE).select(keys).execute();</span>
-<span class="cstat-no" title="statement not covered" >  },</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  finduserId(userId: number): Promise&lt;RowSelect[]&gt; {</span>
+export default (db: Database) =&gt; ({
+  findAll(): Promise&lt;RowSelect[]&gt; {
+    return db.selectFrom(TABLE).select(keys).execute();
+  },
+&nbsp;
+<span class="fstat-no" title="function not covered" >  finduserId(userId: number): Promise&lt;RowSelect[]&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    return db</span>
 <span class="cstat-no" title="statement not covered" >      .selectFrom(TABLE)</span>
 <span class="cstat-no" title="statement not covered" >      .where("congratulatoryMessages.userId", "=", userId)</span>
 <span class="cstat-no" title="statement not covered" >      .select(keys)</span>
 <span class="cstat-no" title="statement not covered" >      .execute();</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  create: async (data: RowInsert): Promise&lt;RowSelect | undefined&gt; =&gt; {</span>
+&nbsp;
+  create: <span class="fstat-no" title="function not covered" >async (data: RowInsert): Promise&lt;RowSelect | undefined&gt; =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    const { gifId, messageTemplateId, sprintId, timestamp, userId } = data;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    try {</span>
@@ -215,7 +194,7 @@ export default <span class="fstat-no" title="function not covered" >(db: Databas
 <span class="cstat-no" title="statement not covered" >      return undefined;</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
-<span class="cstat-no" title="statement not covered" >});</span>
+});
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -223,7 +202,7 @@ export default <span class="fstat-no" title="function not covered" >(db: Databas
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-08T20:16:43.494Z
+                at 2023-11-09T13:53:49.765Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
