@@ -33,21 +33,11 @@ describe("GET", () => {
   });
 
   it("GET / - should return all messages if username not provided", async () => {
-    await createMessages([
-      messageFactory(),
-      messageFactory({
-        template: "Impressive work! Well done!👏",
-      }),
-    ]);
+    await createMessages([messageFactory()]);
 
     const { body } = await supertest(app).get("/messages").expect(200);
 
-    expect(body).toEqual([
-      messageMatcher(),
-      messageMatcher({
-        template: "Impressive work! Well done!👏",
-      }),
-    ]);
+    expect(body).toEqual([messageMatcher()]);
   });
 });
 

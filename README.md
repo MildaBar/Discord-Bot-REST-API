@@ -16,8 +16,8 @@ To set up the project, follow these steps:
 3. **Generate types for database tables:**
    npm run gen:types
 4. **Set up environment for checking endpoints:**
-   -- Use tools like Insomnia to test the API endpoints.
-   -- Ensure you have a Discord account and add the necessary information.
+   - Use tools like Insomnia to test the API endpoints.
+   - Ensure you have a Discord account and add the necessary information.
 
 ## Usage
 
@@ -25,13 +25,13 @@ To set up the project, follow these steps:
 
 - POST /messages
   Send a congratulatory message to a user on Discord.
-  Note: Include the message details in the request body in JSON format with username, sprintCode, and channelId
-  Example:
-  {
-  "username": "johnjoe",
-  "sprintCode": "WD-1.2",
-  "channelId": "1234567891011121314"
-  }
+  > Note: Include the message details in the request body in JSON format with username, sprintCode, and channelId
+  > Example:
+  > {
+  > "username": "johnjoe",
+  > "sprintCode": "WD-1.2",
+  > "channelId": "1234567891011121314"
+  > }
 - GET /messages
   Get a list of all congratulatory messages.
 
