@@ -17,11 +17,11 @@ describe("getUsersId", () => {
     await createUsersRecord([
       usersFactory({
         id: 1,
-        username: "johdoe",
+        username: "johnjoe",
       }),
     ]);
 
-    const username = "johdoe";
+    const username = "johnjoe";
     const userId = await getUsersId(db, username);
 
     expect(userId).toEqual(1);

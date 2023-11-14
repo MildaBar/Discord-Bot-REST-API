@@ -17,7 +17,7 @@ export const usersFactory = (
   overrides: Partial<Insertable<Users>> = {}
 ): Insertable<Users> => ({
   id: 1,
-  username: "JohnJoe",
+  username: "johnjoe",
 });
 
 export const congratulatoryMsgFactory = (

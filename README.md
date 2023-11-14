@@ -9,12 +9,23 @@ This project is a congratulatory message management system with Discord integrat
 To set up the project, follow these steps:
 
 1. **Install Dependencies:**
+
+```
    npm install
+```
+
 2. **Run migrations:**
+
+```
    npm run migrate:latest
+```
 
 3. **Generate types for database tables:**
-   npm run gen:types
+
+```
+npm run gen:types
+```
+
 4. **Set up environment for checking endpoints:**
    - Use tools like Insomnia to test the API endpoints.
    - Ensure you have a Discord account and add the necessary information.
@@ -63,16 +74,29 @@ To set up the project, follow these steps:
 ### Running the program
 
 To run the program, use the following command:
+
+```
 npm run dev
+```
 
 ### Testing
 
 To test the code, use either of the following commands:
+
+```
 npm test
+```
+
 or
+
+```
 npm test filePathYouWantToTest
+```
 
 ### Additional
 
 If you want to see code coverage, run:
+
+```
 npm run coverage
+```

@@ -2,23 +2,19 @@ import createTestDatabase from "@tests/utils/createTestDatabase";
 import supertest from "supertest";
 import createApp from "@/app";
 import { createFor, selectAllFor } from "@tests/utils/records";
-import buildRepository from "../repository";
-import { usersFactory } from "@/modules/users/tests/utils";
 import { messageFactory, messageMatcher } from "./utils";
 import getUsersMsg from "../utils/getUsersMsg";
-import { Database } from "@/database";
 
 const db = await createTestDatabase();
 const app = createApp(db);
 const createMessages = createFor(db, "messageTemplates");
-const createUsers = createFor(db, "users");
+const selectMessages = selectAllFor(db, "messageTemplates");
 
 afterAll(() => db.destroy());
 
 afterEach(async () => {
   // clearing the tested table after each test
   await db.deleteFrom("messageTemplates").execute();
-  await db.deleteFrom("users").execute();
 });
 
 describe("GET", () => {
@@ -33,11 +29,11 @@ describe("GET", () => {
   });
 
   it("GET / - should return all messages if username not provided", async () => {
-    await createMessages([messageFactory()]);
+    const mesagesInDatabase = await selectMessages();
 
     const { body } = await supertest(app).get("/messages").expect(200);
 
-    expect(body).toEqual([messageMatcher()]);
+    expect(body).toEqual(mesagesInDatabase);
   });
 });
 

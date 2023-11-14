@@ -27,11 +27,11 @@ export default (db: Database) => {
         try {
           const username = req.query.username as string;
 
-          if (!username) {
-            return res
-              .status(StatusCodes.NOT_FOUND)
-              .json({ error: "User doesn't exists." });
-          }
+          // if (!username) {
+          //   return res
+          //     .status(StatusCodes.NOT_FOUND)
+          //     .json({ error: "User doesn't exists." });
+          // }
 
           const userMsg = await getUsersMsg(username, db);
 

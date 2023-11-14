@@ -16,7 +16,6 @@ export const repositoryTestSetup = async (db: Database) => {
       username: "johdoe",
     }),
   ]);
-  console.log("Creating users records...");
 
   await createGifsRecords([
     gifFactory({
@@ -36,5 +35,4 @@ export const repositoryTestSetup = async (db: Database) => {
       template: "Impressive work! Well done!👏",
     }),
   ]);
-  console.log("Creating createMessageTemplateRecords records...");
 };
