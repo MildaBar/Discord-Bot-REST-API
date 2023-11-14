@@ -26,12 +26,13 @@ To set up the project, follow these steps:
 - POST /messages
   Send a congratulatory message to a user on Discord.
   > Note: Include the message details in the request body in JSON format with username, sprintCode, and channelId
-  > Example:
-  > {
-  > "username": "johnjoe",
-  > "sprintCode": "WD-1.2",
-  > "channelId": "1234567891011121314"
-  > }
+  >
+  > - Example:
+  >   {
+  >   "username": "johnjoe",
+  >   "sprintCode": "WD-1.2",
+  >   "channelId": "1234567891011121314"
+  >   }
 - GET /messages
   Get a list of all congratulatory messages.
 
@@ -39,14 +40,15 @@ To set up the project, follow these steps:
   Get a list of all congratulatory messages for a specific user.
 
 - CRUD /templates
-  -- POST /templates
-  Create a congratulatory message template.
-  -- GET /templates
-  Get all congratulatory message templates.
-  -- PATCH /templates/:id
-  Update a congratulatory message template.
-  -- DELETE /templates/:id
-  Delete a congratulatory message template.
+
+  - POST /templates
+    Create a congratulatory message template.
+  - GET /templates
+    Get all congratulatory message templates.
+  - PATCH /templates/:id
+    Update a congratulatory message template.
+  - DELETE /templates/:id
+    Delete a congratulatory message template.
 
 - CRUD /sprints
   -- POST /sprints
