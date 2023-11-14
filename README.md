@@ -37,8 +37,7 @@ npm run gen:types
 - POST /messages
   Send a congratulatory message to a user on Discord.
   > Note: Include the message details in the request body in JSON format with username, sprintCode, and channelId
-  >
-  > - Example:
+  - Example:
   ```
      {
      "username": "johnjoe",
@@ -65,13 +64,13 @@ npm run gen:types
 
 - CRUD /sprints
   - POST /sprints
-    Create a sprint.
+    - Create a sprint.
   - GET /sprints
-    Get all sprints.
+    - Get all sprints.
   - PATCH /sprints/:id
-    Update a sprint.
+    - Update a sprint.
   - DELETE /sprints/:id
-    Delete a sprint.
+    - Delete a sprint.
 
 ### Running the program
 

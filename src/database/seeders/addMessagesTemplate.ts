@@ -1,15 +1,4 @@
 import { Database } from "@/database";
-import createDatabase from "@/database/index";
-
-require("dotenv").config();
-
-const DATABASE = process.env.DATABASE_URL;
-
-if (!DATABASE) {
-  throw new Error("No DATABASE_URL provided in the environment variables");
-}
-
-const DB = createDatabase(DATABASE);
 
 export async function addMessages(templates: string[], db: Database) {
   const existingData = await db
@@ -21,16 +10,24 @@ export async function addMessages(templates: string[], db: Database) {
       id: index + 1,
       template,
     }));
-    return await db
+    const insertData = await db
       .insertInto("messageTemplates")
       .values(templateObjects)
       .returningAll()
       .execute();
+
+    if (insertData.length > 0) {
+      console.log("addMessagesTemplate: Messages appended successfully.");
+    }
+
+    return insertData;
   }
-  console.log("Data already exists. Skipping data insertion.");
+  console.log(
+    "addMessagesTemplate: Data already exists. Skipping data insertion."
+  );
 }
 
-const messages = [
+export const messages = [
   "Impressive work! Well done!👏",
   "Fantastic job! Keep up the good work!🎉",
   "You're making great progress!🔥",
@@ -51,7 +48,3 @@ const messages = [
   "Impressive work! Your commitment is truly commendable!👏",
   "Fantastic job on your accomplishment! You're on the right path!🤩",
 ];
-
-addMessages(messages, DB)
-  .then(() => console.log("Data inserted successfully."))
-  .catch((error) => console.error("Error inserting data:", error));

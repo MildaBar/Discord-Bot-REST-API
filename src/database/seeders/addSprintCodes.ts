@@ -1,15 +1,4 @@
 import { Database } from "@/database";
-import createDatabase from "@/database/index";
-
-require("dotenv").config();
-
-const DATABASE = process.env.DATABASE_URL;
-
-if (!DATABASE) {
-  throw new Error("No DATABASE_URL provided in the environment variables");
-}
-
-const DB = createDatabase(DATABASE);
 
 export async function addSprintCodes(
   sprintCodes: string[],
@@ -23,16 +12,24 @@ export async function addSprintCodes(
       sprintCode,
       sprintTitle: sprintTitles[index],
     }));
-    return await db
+    const insertData = await db
       .insertInto("sprints")
       .values(sprintCodeObjects)
       .returningAll()
       .execute();
+
+    if (insertData.length > 0) {
+      console.log(
+        "addSprintCodes: Sprint codes and titles appended successfully."
+      );
+    }
+
+    return insertData;
   }
-  console.log("Data already exists. Skipping data insertion.");
+  console.log("addSprintCodes: Data already exists. Skipping data insertion.");
 }
 
-const sprintCodes = [
+export const sprintCodes = [
   "WD-1.1",
   "WD-1.2",
   "WD-1.3",
@@ -42,7 +39,7 @@ const sprintCodes = [
   "WD-2.3",
   "WD-2.4",
 ];
-const sprintTitles = [
+export const sprintTitles = [
   "First Steps Into Programming with Python: Project",
   "Intermediate Programming with Python: Project",
   "Object Oriented Programming: Project",
@@ -52,7 +49,3 @@ const sprintTitles = [
   "Learning Your First Framework - Vue.js",
   "Typing and Testing JavaScript",
 ];
-
-addSprintCodes(sprintCodes, sprintTitles, DB)
-  .then(() => console.log("Data inserted successfully."))
-  .catch((error) => console.error("Error inserting data:", error));
