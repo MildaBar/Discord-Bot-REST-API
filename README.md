@@ -64,14 +64,14 @@ npm run gen:types
     Delete a congratulatory message template.
 
 - CRUD /sprints
-  -- POST /sprints
-  Create a sprint.
-  -- GET /sprints
-  Get all sprints.
-  -- PATCH /sprints/:id
-  Update a sprint.
-  -- DELETE /sprints/:id
-  Delete a sprint.
+  - POST /sprints
+    Create a sprint.
+  - GET /sprints
+    Get all sprints.
+  - PATCH /sprints/:id
+    Update a sprint.
+  - DELETE /sprints/:id
+    Delete a sprint.
 
 ### Running the program
 
