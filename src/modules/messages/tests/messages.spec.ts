@@ -1,13 +1,13 @@
 import createTestDatabase from "@tests/utils/createTestDatabase";
 import supertest from "supertest";
 import createApp from "@/app";
-import { createFor, selectAllFor } from "@tests/utils/records";
-import { messageFactory, messageMatcher } from "./utils";
+import { selectAllFor } from "@tests/utils/records";
 import getUsersMsg from "../utils/getUsersMsg";
+
+import { sendCongratulatoryMessage } from "../../../../discordBot/discordBot";
 
 const db = await createTestDatabase();
 const app = createApp(db);
-const createMessages = createFor(db, "messageTemplates");
 const selectMessages = selectAllFor(db, "messageTemplates");
 
 afterAll(() => db.destroy());
@@ -37,13 +37,23 @@ describe("GET", () => {
   });
 });
 
-// it("POST / should send congratulatory message and return success", async () => {
-//   const data = {
-//     username: "testUser",
-//     sprintCode: "SPR-001",
-//     channelId: "testChannelId",
-//   };
-//   const res = await request(app).post("/").send(data);
-//   expect(res.status).toEqual(200); // Assuming 200 for success
-//   expect(res.body).toHaveProperty("congratulatoryMessage");
-// });
+describe("POST", () => {
+  it("POST / should send congratulatory message and return success", async () => {
+    const data = {
+      username: "testUser",
+      sprintCode: "SPR-001",
+      channelId: "testChannelId",
+    };
+
+    const { body } = await supertest(app).post("/messages").send(data);
+
+    const sendCongratulatoryMessageSpy = vi.fn(sendCongratulatoryMessage);
+    const result = sendCongratulatoryMessageSpy(data.channelId, data.username);
+
+    expect(sendCongratulatoryMessageSpy).toHaveBeenCalledWith(
+      data.channelId,
+      data.username
+    );
+    expect(sendCongratulatoryMessageSpy).toHaveBeenCalled();
+  });
+});

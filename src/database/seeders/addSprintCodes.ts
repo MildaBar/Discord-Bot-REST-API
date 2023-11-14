@@ -1,8 +1,20 @@
-import db from "../index";
+import { Database } from "@/database";
+import createDatabase from "@/database/index";
+
+require("dotenv").config();
+
+const DATABASE = process.env.DATABASE_URL;
+
+if (!DATABASE) {
+  throw new Error("No DATABASE_URL provided in the environment variables");
+}
+
+const DB = createDatabase(DATABASE);
 
 export async function addSprintCodes(
   sprintCodes: string[],
-  sprintTitles: string[]
+  sprintTitles: string[],
+  db: Database
 ) {
   const existingData = await db.selectFrom("sprints").selectAll().execute();
   if (existingData.length === 0) {
@@ -41,6 +53,6 @@ const sprintTitles = [
   "Typing and Testing JavaScript",
 ];
 
-addSprintCodes(sprintCodes, sprintTitles)
+addSprintCodes(sprintCodes, sprintTitles, DB)
   .then(() => console.log("Data inserted successfully."))
   .catch((error) => console.error("Error inserting data:", error));

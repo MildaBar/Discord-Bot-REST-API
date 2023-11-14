@@ -13,8 +13,7 @@ import getSprintsId from "../congratulatoryMessages/utils/getSprintsId";
 import getUsersId from "../congratulatoryMessages/utils/getUsersId";
 import insertCongratulatoryMessage from "../congratulatoryMessages/controller";
 
-import { sendCongratulatoryMessage } from "../../../discordBot";
-import { AttachmentBuilder } from "discord.js";
+import { sendCongratulatoryMessage } from "../../../discordBot/discordBot";
 
 export default (db: Database) => {
   const router = Router();
@@ -26,12 +25,6 @@ export default (db: Database) => {
       jsonRoute(async (req, res) => {
         try {
           const username = req.query.username as string;
-
-          // if (!username) {
-          //   return res
-          //     .status(StatusCodes.NOT_FOUND)
-          //     .json({ error: "User doesn't exists." });
-          // }
 
           const userMsg = await getUsersMsg(username, db);
 

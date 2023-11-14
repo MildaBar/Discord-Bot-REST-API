@@ -1,6 +1,4 @@
-import db from "../index";
 import { Database } from "@/database";
-import { Kysely, SqliteDatabase } from "kysely";
 import createDatabase from "@/database/index";
 
 require("dotenv").config();

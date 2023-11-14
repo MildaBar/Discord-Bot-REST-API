@@ -40,11 +40,11 @@ npm run gen:types
   >
   > - Example:
   ```
-  >   {
-  >   "username": "johnjoe",
-  >   "sprintCode": "WD-1.2",
-  >   "channelId": "1234567891011121314"
-  >   }
+     {
+     "username": "johnjoe",
+     "sprintCode": "WD-1.2",
+     "channelId": "1234567891011121314"
+     }
   ```
 - GET /messages
   Get a list of all congratulatory messages.
@@ -102,3 +102,5 @@ If you want to see code coverage, run:
 ```
 npm run coverage
 ```
+
+#### Link to peer programming exercise:
