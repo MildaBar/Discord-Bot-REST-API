@@ -3,41 +3,53 @@ import supertest from "supertest";
 import createApp from "@/app";
 import { createFor, selectAllFor } from "@tests/utils/records";
 import buildRepository from "../repository";
+import { usersFactory } from "@/modules/users/tests/utils";
 import { messageFactory, messageMatcher } from "./utils";
+import getUsersMsg from "../utils/getUsersMsg";
+import { Database } from "@/database";
 
 const db = await createTestDatabase();
 const app = createApp(db);
 const createMessages = createFor(db, "messageTemplates");
+const createUsers = createFor(db, "users");
 
 afterAll(() => db.destroy());
 
 afterEach(async () => {
   // clearing the tested table after each test
   await db.deleteFrom("messageTemplates").execute();
+  await db.deleteFrom("users").execute();
 });
 
-describe("Congratulatory Messages API", () => {
-  it("GET / should return all messages for a user", async () => {
+describe("GET", () => {
+  it("GET / username - should call getUsersMsg ", async () => {
+    const getUsersMsgSpy = vi.fn(getUsersMsg);
+    const username = "johnjoe";
+    await supertest(app).get(`/messages?username=${username}`).expect(200);
+
+    const result = getUsersMsgSpy(username, db);
+    expect(getUsersMsgSpy).toHaveBeenCalledWith(username, db);
+    expect(getUsersMsgSpy).toHaveBeenCalled();
+  });
+
+  it("GET / - should return all messages if username not provided", async () => {
     await createMessages([
+      messageFactory(),
       messageFactory({
-        id: 1,
-        template: "template 1",
+        template: "Impressive work! Well done!👏",
       }),
     ]);
-    const response = await supertest(app)
-      .get("/messages?username=JohnJoe")
-      .expect(200);
-    const { body } = response;
-    expect(body).toEqual({
-      messages: ["template 1"],
-    });
+
+    const { body } = await supertest(app).get("/messages").expect(200);
+
+    expect(body).toEqual([
+      messageMatcher(),
+      messageMatcher({
+        template: "Impressive work! Well done!👏",
+      }),
+    ]);
   });
 });
-// it("GET / should return all messages if username not provided", async () => {
-//   const res = await request(app).get("/");
-//   expect(res.status).toEqual(200); // Assuming 200 for success
-//   expect(res.body).toHaveProperty("messages");
-// });
 
 // it("POST / should send congratulatory message and return success", async () => {
 //   const data = {

@@ -14,6 +14,7 @@ import getUsersId from "../congratulatoryMessages/utils/getUsersId";
 import insertCongratulatoryMessage from "../congratulatoryMessages/controller";
 
 import { sendCongratulatoryMessage } from "../../../discordBot";
+import { AttachmentBuilder } from "discord.js";
 
 export default (db: Database) => {
   const router = Router();
@@ -25,7 +26,6 @@ export default (db: Database) => {
       jsonRoute(async (req, res) => {
         try {
           const username = req.query.username as string;
-          // username;
 
           if (!username) {
             return res
@@ -82,13 +82,14 @@ export default (db: Database) => {
             .json({ error: "GIF not found." });
         }
 
-        const congratulatoryMessage = `@${username} has just completed ${sprintTitle}! ${randomMessage} ${gif}`;
+        const congratulatoryMessage = `@${username} has just completed ${sprintTitle}! ${randomMessage}`;
 
         // SEND CONGRATULATORY MESSAGE
         const sendMsg = await sendCongratulatoryMessage(
           channelId,
           congratulatoryMessage
         );
+
         if (sendMsg) {
           // GET IDs
           const gifIdPromise = getGifId(db, gif);

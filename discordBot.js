@@ -1,6 +1,12 @@
 import "dotenv/config";
 import axios from "axios";
-import { Client, GatewayIntentBits } from "discord.js";
+import {
+  Client,
+  GatewayIntentBits,
+  EmbedBuilder,
+  AttachmentBuilder,
+} from "discord.js";
+import getRandomGif from "./src/modules/messages/utils/getRandomGif";
 
 const client = new Client({
   intents: [
@@ -18,7 +24,9 @@ export const sendCongratulatoryMessage = async (channelId, msg) => {
   try {
     const channel = client.channels.cache.get(channelId);
     if (channel) {
+      const gif = await getRandomGif();
       await channel.send(msg);
+      await channel.send(gif);
       return true;
     } else {
       console.error("Channel not found");

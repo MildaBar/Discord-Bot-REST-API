@@ -29,7 +29,7 @@ afterEach(async () => {
 });
 
 describe("getUsersMsg", () => {
-  it("should work", async () => {
+  it("should retrieve congratulatory message for a user", async () => {
     await repositoryTestSetup(db);
 
     await createUsersMsgRecords([

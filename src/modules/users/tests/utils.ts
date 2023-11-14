@@ -5,7 +5,7 @@ export const usersFactory = (
   overrides: Partial<Insertable<Users>> = {}
 ): Insertable<Users> => ({
   id: 1,
-  username: "johdoe",
+  username: "johnjoe",
 });
 
 export const usersMatcher = (overrides: Partial<Insertable<Users>> = {}) => ({

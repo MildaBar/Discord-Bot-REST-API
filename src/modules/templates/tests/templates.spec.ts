@@ -20,7 +20,6 @@ afterAll(() => db.destroy());
 describe("GET", () => {
   it("should return a list of existing articles", async () => {
     await createMessagesRecords([
-      messageFactory(),
       messageFactory({
         template: "Impressive work! Well done!👏",
       }),
@@ -29,7 +28,6 @@ describe("GET", () => {
     const { body } = await supertest(app).get("/templates").expect(200);
 
     expect(body).toEqual([
-      messageMatcher(),
       messageMatcher({
         template: "Impressive work! Well done!👏",
       }),

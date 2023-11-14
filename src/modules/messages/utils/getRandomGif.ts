@@ -32,32 +32,20 @@ export default async function extractGifUrl() {
     const randomOffset = Math.floor(Math.random() * 50);
 
     // giphy url
-    const response = await fetch(
-      `${giphyBaseUrl}${searchEndpoint}?api_key=${apiKey}&q=${searchTerm}&limit=${limit}&offset=${randomOffset}&rating=${rating}&lang=${lang}&bundle=${bundle}`
-    );
+    const url = `${giphyBaseUrl}${searchEndpoint}?api_key=${apiKey}&q=${searchTerm}&limit=${limit}&offset=${randomOffset}&rating=${rating}&lang=${lang}&bundle=${bundle}`;
+    const response = await fetch(url);
 
     // gif data
-    const data = await response.json();
+    const gifData = await response.json();
 
-    if (!data || !data.data || data.data.length === 0) {
+    if (!gifData) {
       throw new Error("No data retrieved from Giphy API");
     }
 
-    const gifUrl = data.data[0].url;
+    const gifUrl = gifData.data[0].url;
     return gifUrl;
   } catch (error) {
     console.error("Error fetching GIF URL", error);
     throw error;
   }
 }
-
-// async function getGif() {
-//   try {
-//     const gifUrl = await extractGifUrl();
-//     return gifUrl;
-//   } catch (error) {
-//     console.error("Error:", error);
-//   }
-// }
-
-// const gif = getGif();
