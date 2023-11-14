@@ -39,11 +39,13 @@ npm run gen:types
   > Note: Include the message details in the request body in JSON format with username, sprintCode, and channelId
   >
   > - Example:
+  ```
   >   {
   >   "username": "johnjoe",
   >   "sprintCode": "WD-1.2",
   >   "channelId": "1234567891011121314"
   >   }
+  ```
 - GET /messages
   Get a list of all congratulatory messages.
 
