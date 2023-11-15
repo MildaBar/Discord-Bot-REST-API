@@ -10,23 +10,30 @@ To set up the project, follow these steps:
 
 1. **Install Dependencies:**
 
-```
+```bash
    npm install
 ```
 
 2. **Run migrations:**
 
-```
+```bash
    npm run migrate:latest
 ```
 
 3. **Generate types for database tables:**
 
-```
+```bash
 npm run gen:types
 ```
 
-4. **Set up environment for checking endpoints:**
+4. **Run seeders file:**
+
+```bash
+npm run coverage
+```
+
+5. **Set up environment for checking endpoints:**
+
    - Use tools like Insomnia to test the API endpoints.
    - Ensure you have a Discord account and add the necessary information.
 
@@ -38,12 +45,12 @@ npm run gen:types
   Send a congratulatory message to a user on Discord.
   > Note: Include the message details in the request body in JSON format with username, sprintCode, and channelId
   - Example:
-  ```
-     {
-     "username": "johnjoe",
-     "sprintCode": "WD-1.2",
-     "channelId": "1234567891011121314"
-     }
+  ```json
+  {
+    "username": "johnjoe",
+    "sprintCode": "WD-1.2",
+    "channelId": "1234567891011121314"
+  }
   ```
 - GET /messages
   Get a list of all congratulatory messages.
@@ -102,4 +109,6 @@ If you want to see code coverage, run:
 npm run coverage
 ```
 
-#### Link to peer programming exercise:
+###### Link to peer programming exercise:
+
+https://github.com/MildaBar/peer-programming-exercise.git
