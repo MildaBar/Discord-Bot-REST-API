@@ -10,122 +10,136 @@ To set up the project, follow these steps:
 
 1. **Install Dependencies:**
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 2. **Run migrations:**
 
-```bash
-npm run migrate:latest
-```
+   ```bash
+   npm run migrate:latest
+   ```
 
 3. **Generate types for database tables:**
 
-```bash
-npm run gen:types
-```
+   ```bash
+   npm run gen:types
+   ```
 
 4. **Run seeders file:**
 
-```bash
-npm run coverage
-```
+   ```bash
+   npm run seed
+   ```
 
 5. **Set up environment for checking endpoints:**
-
    - Use a GUI REST client, such as Insomnia, Postman, or VS Code extensions (REST Client or Thunder Client).
    - Ensure you have a Discord account and add the necessary information. To make Discord integration work, you need to:
-   - Create a Discord application.
-   - Obtain the Bot Token and add it to your project's environment variables.
+     - Create a Discord application.
+     - Obtain the Bot Token and add it to your project's environment variables.
 
 ## Usage
 
 ### Endpoints
 
-- POST /messages
-  <p>Send a congratulatory message to a user on Discord.</p>
-  <em><strong>NOTE:</strong></em> Include the message details in the request body in JSON format with username, sprintCode, and channelId
-  <p><em><strong>Example:</strong></em></p>
-  ```
-  {
-    "username": "johnjoe",
-    "sprintCode": "WD-1.2",
-    "channelId": "1234567891011121314"
-  }
-  ```
+- **POST /messages**
 
-- GET /messages
-  <p>Get a list of all congratulatory messages.</p>
-
-- GET /messages?username=johdoe
-  <p>Get a list of all congratulatory messages for a specific user.</p>
-
-- CRUD /templates
-
-  - **POST /templates** - Create a congratulatory message template.
-  <em><strong>NOTE:</strong></em> In the request body in JSON format include template you want to add.
-  <p><em><strong>Example:</strong></em></p>
-
-  ```
-  {
-    "template": "Congratulations on your success! You're unstoppable!🎉"
-  }
-  ```
-
-  - **GET /templates** - Get all congratulatory message templates.
-  - **PATCH /templates/:id** - Update a congratulatory message template.
-  <em><strong>NOTE:</strong></em> Include the template id and data you want to update in the request body in JSON format.
-  <p><em><strong>Example:</strong></em></p>
-
-  ```
-  {
-    "id": 20,
-    "template": "Congratulations on your success! 🎉"
-  }
-  ```
-
-  - **DELETE /templates/:id** - Delete a congratulatory message template.
-  <em><strong>NOTE:</strong></em> Include the template id in the request body in JSON format.
-  <p><em><strong>Example:</strong></em></p>
-
-  ```
-  {
-  	"id": 20
-  }
-
-  ```
-
-- CRUD /sprints
-
-  - **POST /sprints** - Create a sprint.
-  <em><strong>NOTE:</strong></em> Include the message details in the request body in JSON format with username, sprintCode, and channelId
-    <p><em><strong>Example:</strong></em></p>
-
-  ```
-  {
-    "template": "Congratulations on your success! You're unstoppable!🎉"
-  }
-  ```
-
-- **GET /sprints** - Get all sprints.
-- **PATCH /sprints/:id** - Update a sprint.
-  <em><strong>NOTE:</strong></em> Include the sprints id and data you want to update in the request body in JSON format.
-  <p><em><strong>Example:</strong></em></p>
-  ```
-  {
-    "id": 9,
-    "sprintTitle": "Node.js and Relational Databases - first Module 3 project"
-  }
-  ```
-- **DELETE /sprints/:id** - Delete a sprint.
-  <em><strong>NOTE:</strong></em> Include the sprint id in the request body in JSON format.
-  <p><em><strong>Example:</strong></em></p>
-  ```
-  {
-    "id": 9
+  - Send a congratulatory message to a user on Discord.
+  - **NOTE:** Include the message details in the request body in JSON format with username, sprintCode, and channelId
+  - **Example:**
+    ```json
+    {
+      "username": "johnjoe",
+      "sprintCode": "WD-1.2",
+      "channelId": "1234567891011121314"
     }
-  ```
+    ```
+
+- **GET /messages**
+
+  - Get a list of all congratulatory messages.
+
+- **GET /messages?username=johdoe**
+
+  - Get a list of all congratulatory messages for a specific user.
+
+- **CRUD /templates**
+
+  - **POST /templates**
+
+    - Create a congratulatory message template.
+    - **NOTE:** In the request body in JSON format include the template you want to add.
+    - **Example:**
+      ```json
+      {
+        "template": "Congratulations on your success! You're unstoppable!🎉"
+      }
+      ```
+
+  - **GET /templates**
+
+    - Get all congratulatory message templates.
+
+  - **PATCH /templates/:id**
+
+    - Update a congratulatory message template.
+    - **NOTE:** Include the template id and data you want to update in the request body in JSON format.
+    - **Example:**
+      ```json
+      {
+        "id": 20,
+        "template": "Congratulations on your success! 🎉"
+      }
+      ```
+
+  - **DELETE /templates/:id**
+    - Delete a congratulatory message template.
+    - **NOTE:** Include the template id in the request body in JSON format.
+    - **Example:**
+      ```json
+      {
+        "id": 20
+      }
+      ```
+
+- **CRUD /sprints**
+
+  - **POST /sprints**
+
+    - Create a sprint.
+    - **NOTE:** Include the message details in the request body in JSON format with username, sprintCode, and channelId
+    - **Example:**
+      ```json
+      {
+        "template": "Congratulations on your success! You're unstoppable!🎉"
+      }
+      ```
+
+  - **GET /sprints**
+
+    - Get all sprints.
+
+  - **PATCH /sprints/:id**
+
+    - Update a sprint.
+    - **NOTE:** Include the sprint id and data you want to update in the request body in JSON format.
+    - **Example:**
+      ```json
+      {
+        "id": 9,
+        "sprintTitle": "Node.js and Relational Databases - first Module 3 project"
+      }
+      ```
+
+  - **DELETE /sprints/:id**
+    - Delete a sprint.
+    - **NOTE:** Include the sprint id in the request body in JSON format.
+    - **Example:**
+      ```json
+      {
+        "id": 9
+      }
+      ```
 
 ### Running the program
 
