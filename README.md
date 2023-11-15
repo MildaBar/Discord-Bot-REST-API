@@ -11,13 +11,13 @@ To set up the project, follow these steps:
 1. **Install Dependencies:**
 
 ```bash
-   npm install
+npm install
 ```
 
 2. **Run migrations:**
 
 ```bash
-   npm run migrate:latest
+npm run migrate:latest
 ```
 
 3. **Generate types for database tables:**
@@ -44,14 +44,15 @@ npm run coverage
 - POST /messages
   <p>Send a congratulatory message to a user on Discord.</p>
   > Note: Include the message details in the request body in JSON format with username, sprintCode, and channelId
-  <p>Example:</p>
-  ```json
-  {
-    "username": "johnjoe",
-    "sprintCode": "WD-1.2",
-    "channelId": "1234567891011121314"
-  }
-  ```
+  > <p>Example:</p>
+  > ```json
+  > {
+  >   "username": "johnjoe",
+  >   "sprintCode": "WD-1.2",
+  >   "channelId": "1234567891011121314"
+  > }
+  > ```
+
 - GET /messages
   <p>Get a list of all congratulatory messages.</p>
 
@@ -83,7 +84,7 @@ npm run coverage
 
 To run the program, use the following command:
 
-```
+```bash
 npm run dev
 ```
 
@@ -91,21 +92,21 @@ npm run dev
 
 To test the code, use either of the following commands:
 
-```
+```bash
 npm test
 ```
 
 or
 
-```
-npm test filePathYouWantToTest
+```bash
+npm test file/Path/You/Want/To/Test
 ```
 
 ### Additional
 
 If you want to see code coverage, run:
 
-```
+```bash
 npm run coverage
 ```
 
