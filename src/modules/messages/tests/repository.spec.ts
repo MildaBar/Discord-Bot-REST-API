@@ -1,12 +1,11 @@
 import createTestDatabase from "@tests/utils/createTestDatabase";
-import { createFor, selectAllFor } from "@tests/utils/records";
+import { createFor } from "@tests/utils/records";
 import buildRepository from "../repository";
 import { messageFactory, messageMatcher } from "./utils";
 
 const db = await createTestDatabase();
 const repository = buildRepository(db);
 const createMessages = createFor(db, "messageTemplates");
-const selectMessages = selectAllFor(db, "messageTemplates");
 
 afterAll(() => db.destroy());
 
