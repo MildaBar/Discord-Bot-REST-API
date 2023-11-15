@@ -45,7 +45,7 @@ To set up the project, follow these steps:
 - **POST /messages**
 
   - Send a congratulatory message to a user on Discord.
-  - **NOTE:** Include the message details in the request body in JSON format with username, sprintCode, and channelId
+  - **NOTE:** Include the message data in the request body in JSON format with username, sprintCode, and channelId
   - **Example:**
     ```json
     {
@@ -62,6 +62,10 @@ To set up the project, follow these steps:
 - **GET /messages?username=johdoe**
 
   - Get a list of all congratulatory messages for a specific user.
+
+- **GET /messages?sprint=WD-1.1**
+
+  - Get a list of all congratulatory messages for a specific sprint.
 
 - **CRUD /templates**
 
@@ -107,7 +111,7 @@ To set up the project, follow these steps:
   - **POST /sprints**
 
     - Create a sprint.
-    - **NOTE:** Include the sprint details in the request body in JSON format with sprintCode, and sprintTitle.
+    - **NOTE:** Include the sprint data in the request body in JSON format with sprintCode, and sprintTitle.
     - **Example:**
       ```json
       {

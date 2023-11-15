@@ -1,4 +1,3 @@
-import supertest from "supertest";
 import createApp from "@/app";
 import createTestDatabase from "@tests/utils/createTestDatabase";
 import getRandomGif from "../getRandomGif";
@@ -25,7 +24,7 @@ describe("getRandomGif", () => {
 });
 
 /*
-
+EXPLANATION:
 /^https?:\/\/(?:.*\.)?giphy\.com\/.*$/
 
 ^ - the start of the string

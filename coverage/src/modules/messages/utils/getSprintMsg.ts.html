@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/modules/messages/utils/getUsersMsg.ts</title>
+    <title>Code coverage report for src/modules/messages/utils/getSprintMsg.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/modules/messages/utils</a> getUsersMsg.ts</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/modules/messages/utils</a> getSprintMsg.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">93.54% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>27/27</span>
+                <span class='fraction'>29/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">93.54% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>27/27</span>
+                <span class='fraction'>29/31</span>
             </div>
         
             
@@ -90,59 +90,71 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type { Database } from "@/database";
-import buildUsersRepository from "../../users/repository";
-import buildUsersMsgRepository from "../../congratulatoryMessages/repository";
-import buildMsgRepository from "../repository";
+import buildRepository from "../../congratulatoryMessages/repository";
+import buildSprintRepository from "../../sprints/repository";
+import buildMsgTemplateRepository from "../../templates/repository";
 &nbsp;
-export default async function getUsersMsg(username: string, db: Database) {
-  const users = buildUsersRepository(db, username);
-  const usersMsg = buildUsersMsgRepository(db);
-  const messages = buildMsgRepository(db);
+export default async function getSprintMsg(sprintCode: string, db: Database) {
+  const sprintMsgRepository = buildRepository(db);
+  const sprintRepository = buildSprintRepository(db);
+  const msgTemplateRepository = buildMsgTemplateRepository(db);
 &nbsp;
-  if (username) {
-    const userData = await users.findUser(username);
-    const userId = userData?.id;
+  const sprint = await sprintRepository.findByCode(sprintCode);
+  const sprintId = sprint?.id;
 &nbsp;
-    const userMsgData = await usersMsg.finduserId(userId || 0);
+  if (sprintId) {
+    const sprintMsgArray = await sprintMsgRepository.findMsgTemplate(sprintId);
 &nbsp;
-    const userMsgId = userMsgData.map((msg) =&gt; msg.messageTemplateId);
+    const sprintMsgTemplateIds = sprintMsgArray.map(
+      (id) =&gt; id.messageTemplateId
+    );
 &nbsp;
-    const userMsgPromises = userMsgId.map((id) =&gt; messages.findById(id));
+    const templates = await Promise.all(
+      sprintMsgTemplateIds.map((id) =&gt; msgTemplateRepository.findById(id))
+    );
 &nbsp;
-    const userMsg = (await Promise.all(userMsgPromises))
-      .filter((message) =&gt; message !== undefined)
-      .map((message) =&gt; message!.template);
+    const templatesArray = templates.map((template) =&gt; template?.template);
 &nbsp;
-    return userMsg;
-  }
+    return templatesArray;
+<span class="branch-0 cbranch-no" title="branch not covered" >  } else {</span>
+<span class="cstat-no" title="statement not covered" >    console.log("No sprint ID found.");</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
 }
 &nbsp;</pre></td></tr></table></pre>
 

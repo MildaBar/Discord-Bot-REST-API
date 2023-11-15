@@ -12,8 +12,8 @@ import getMsgId from "../congratulatoryMessages/utils/getMsgId";
 import getSprintsId from "../congratulatoryMessages/utils/getSprintsId";
 import getUsersId from "../congratulatoryMessages/utils/getUsersId";
 import insertCongratulatoryMessage from "../congratulatoryMessages/controller";
-
 import { sendCongratulatoryMessage } from "../../../discordBot/discordBot";
+import getSprintMsg from "./utils/getSprintMsg";
 
 export default (db: Database) => {
   const router = Router();
@@ -25,12 +25,10 @@ export default (db: Database) => {
       jsonRoute(async (req, res) => {
         try {
           const username = req.query.username as string;
+          const sprintId = req.query.sprint as string;
 
-          const userMsg = await getUsersMsg(username, db);
-
-          if (userMsg) {
-            return res.status(StatusCodes.OK).json({ messages: userMsg });
-          } else {
+          if (!username && !sprintId) {
+            // return all messages
             const allMessages = await messages.findAll();
 
             if (!allMessages) {
@@ -40,6 +38,24 @@ export default (db: Database) => {
             }
 
             return res.status(StatusCodes.OK).json(allMessages);
+          } else if (username) {
+            // fetch messages for a specific user
+            const userMsg = await getUsersMsg(username, db);
+
+            if (userMsg) {
+              return res.status(StatusCodes.OK).json({ messages: userMsg });
+            } else {
+              return res
+                .status(StatusCodes.NOT_FOUND)
+                .json({ error: "Sprint messages not found." });
+            }
+          } else if (sprintId) {
+            // fetch messages for a specific sprint
+            const sprintMsg = await getSprintMsg(sprintId, db);
+
+            if (sprintMsg) {
+              return res.status(StatusCodes.OK).json({ message: sprintMsg });
+            }
           }
         } catch (error) {
           return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });

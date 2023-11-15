@@ -22,6 +22,14 @@ export default (db: Database) => ({
       .execute();
   },
 
+  findMsgTemplate(sprintId: number): Promise<RowSelect[]> {
+    return db
+      .selectFrom(TABLE)
+      .where("sprintId", "=", sprintId)
+      .select(keys)
+      .execute();
+  },
+
   create: async (data: RowInsert): Promise<RowSelect | undefined> => {
     const { gifId, messageTemplateId, sprintId, timestamp, userId } = data;
 
