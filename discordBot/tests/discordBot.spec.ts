@@ -1,12 +1,9 @@
 import createTestDatabase from "@tests/utils/createTestDatabase";
 import { Client, GatewayIntentBits } from "discord.js";
-import supertest from "supertest";
-import createApp from "@/app";
 import { sendCongratulatoryMessage } from "../discordBot";
 
 vitest.mock("discord.js");
 const db = await createTestDatabase();
-const app = createApp(db);
 
 describe("sendCongratulatoryMessage", () => {
   it("should send the message and gif to discord bot", async () => {

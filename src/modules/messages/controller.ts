@@ -64,7 +64,7 @@ export default (db: Database) => {
     )
     .post(async (req, res) => {
       try {
-        const { username, sprintCode, channelId } = req.body;
+        const { username, sprintCode, channelId, messageTemplateId } = req.body;
 
         // GET SPRINT TITLE
         const sprint = await getSprintTitle(sprintCode, db);
@@ -76,11 +76,23 @@ export default (db: Database) => {
         const sprintTitle = sprint?.sprintTitle;
 
         // GET RANDOM MESSAGE
-        const randomMessage = await getRandomMsg(db);
+        let randomMessage = await getRandomMsg(db);
         if (!randomMessage) {
           return res
             .status(StatusCodes.NOT_FOUND)
             .json({ error: "Random congratulatory message not found." });
+        }
+
+        // GET MESSAGE IF messageTemplateId AVAILABLE
+        if (messageTemplateId) {
+          const template = await messages.findById(messageTemplateId);
+
+          if (!template) {
+            return res
+              .status(StatusCodes.NOT_FOUND)
+              .json({ error: "Message template not found." });
+          }
+          randomMessage = template.template;
         }
 
         // GET GIF

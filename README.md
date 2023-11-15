@@ -43,15 +43,30 @@ To set up the project, follow these steps:
 ### Endpoints
 
 - **POST /messages**
+  _You can send a congratulatory message to any channel_
 
   - Send a congratulatory message to a user on Discord.
   - **NOTE:** Include the message data in the request body in JSON format with username, sprintCode, and channelId
   - **Example:**
+
     ```json
     {
       "username": "johnjoe",
       "sprintCode": "WD-1.2",
       "channelId": "1234567891011121314"
+    }
+    ```
+
+  - Send specific congratulatory message to a user on Discord.
+  - **NOTE:** Include the message data in the request body in JSON format with username, sprintCode, channelId and messageTemplateId
+  - **Example:**
+
+    ```json
+    {
+      "username": "johnjoe",
+      "sprintCode": "WD-2.2",
+      "channelId": "1168443682287009805",
+      "messageTemplateId": 2
     }
     ```
 
