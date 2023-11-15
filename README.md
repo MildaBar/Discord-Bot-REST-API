@@ -42,9 +42,9 @@ npm run coverage
 ### Endpoints
 
 - POST /messages
-  Send a congratulatory message to a user on Discord.
+  <p>Send a congratulatory message to a user on Discord.</p>
   > Note: Include the message details in the request body in JSON format with username, sprintCode, and channelId
-  - Example:
+  <p>Example:</p>
   ```json
   {
     "username": "johnjoe",
@@ -53,31 +53,31 @@ npm run coverage
   }
   ```
 - GET /messages
-  Get a list of all congratulatory messages.
+  <p>Get a list of all congratulatory messages.</p>
 
 - GET /messages?username=johdoe
-  Get a list of all congratulatory messages for a specific user.
+  <p>Get a list of all congratulatory messages for a specific user.</p>
 
 - CRUD /templates
 
   - POST /templates
-    Create a congratulatory message template.
+    <p>Create a congratulatory message template.</p>
   - GET /templates
-    Get all congratulatory message templates.
+    <p>Get all congratulatory message templates.</p>
   - PATCH /templates/:id
-    Update a congratulatory message template.
+    <p>Update a congratulatory message template.</p>
   - DELETE /templates/:id
-    Delete a congratulatory message template.
+    <p>Delete a congratulatory message template.</p>
 
 - CRUD /sprints
   - POST /sprints
-    - Create a sprint.
+    <p>Create a sprint.</p>
   - GET /sprints
-    - Get all sprints.
+    <p>Get all sprints.</p>
   - PATCH /sprints/:id
-    - Update a sprint.
+    <p>Update a sprint.</p>
   - DELETE /sprints/:id
-    - Delete a sprint.
+    <p>Delete a sprint.</p>
 
 ### Running the program
 
