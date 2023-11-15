@@ -43,9 +43,10 @@ To set up the project, follow these steps:
 ### Endpoints
 
 - **POST /messages**
-  _You can send a congratulatory message to any channel_
+  <p><em>You can send a congratulatory message to any channel</em></p>
 
-  - Send a congratulatory message to a user on Discord.
+  1. Send a congratulatory message to a user on Discord.
+
   - **NOTE:** Include the message data in the request body in JSON format with username, sprintCode, and channelId
   - **Example:**
 
@@ -57,7 +58,8 @@ To set up the project, follow these steps:
     }
     ```
 
-  - Send specific congratulatory message to a user on Discord.
+  2. Send specific congratulatory message to a user on Discord.
+
   - **NOTE:** Include the message data in the request body in JSON format with username, sprintCode, channelId and messageTemplateId
   - **Example:**
 
