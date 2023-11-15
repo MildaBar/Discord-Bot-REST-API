@@ -14,6 +14,7 @@ import getUsersId from "../congratulatoryMessages/utils/getUsersId";
 import insertCongratulatoryMessage from "../congratulatoryMessages/controller";
 import { sendCongratulatoryMessage } from "../../../discordBot/discordBot";
 import getSprintMsg from "./utils/getSprintMsg";
+import buildUserRepository from "@/modules/users/repository";
 
 export default (db: Database) => {
   const router = Router();
@@ -42,7 +43,15 @@ export default (db: Database) => {
             // fetch messages for a specific user
             const userMsg = await getUsersMsg(username, db);
 
-            if (userMsg) {
+            // check username
+            const user = buildUserRepository(db, username);
+            const checkUsername = await user.findUser(username);
+
+            if (checkUsername?.username === undefined) {
+              return res
+                .status(StatusCodes.NOT_FOUND)
+                .json({ message: `${username} is not found.` });
+            } else if (userMsg) {
               return res.status(StatusCodes.OK).json({ messages: userMsg });
             } else {
               return res
@@ -53,8 +62,20 @@ export default (db: Database) => {
             // fetch messages for a specific sprint
             const sprintMsg = await getSprintMsg(sprintId, db);
 
-            if (sprintMsg) {
-              return res.status(StatusCodes.OK).json({ message: sprintMsg });
+            if (sprintMsg !== undefined) {
+              if (sprintMsg.length === 0) {
+                return res
+                  .status(StatusCodes.OK)
+                  .json({
+                    message: `For ${sprintId} there are no congratulatory messages.`,
+                  });
+              } else if (sprintMsg) {
+                return res.status(StatusCodes.OK).json({ message: sprintMsg });
+              }
+            } else {
+              return res
+                .status(StatusCodes.NOT_FOUND)
+                .json({ message: `${sprintId} not found` });
             }
           }
         } catch (error) {
