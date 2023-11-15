@@ -1,4 +1,4 @@
-import { number, z } from "zod";
+import { z } from "zod";
 import type { CongratulatoryMessages } from "@/database";
 
 type msgData = CongratulatoryMessages;
@@ -12,7 +12,6 @@ const schema = z.object({
 });
 
 const insertable = schema.omit({ id: true });
-const updateable = insertable.partial();
 
 export const parse = (md: unknown) => {
   const parseCongratulatoryMsg = schema.parse(md);

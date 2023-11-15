@@ -1,4 +1,3 @@
-// import createTestDatabase from "@tests/utils/createTestDatabase";
 import createTestDatabase from "../../../../tests/utils/createTestDatabase";
 import { selectAllFor } from "../../../../tests/utils/records";
 import buildRepository from "../repository";

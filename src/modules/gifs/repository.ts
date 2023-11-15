@@ -1,6 +1,6 @@
 import type { Insertable, Selectable, Updateable } from "kysely";
 import { keys } from "./schema";
-import type { Gifs, Database, DB } from "@/database";
+import type { Gifs, Database } from "@/database";
 
 const TABLE = "gifs";
 type Row = Gifs;

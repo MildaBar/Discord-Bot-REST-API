@@ -1,4 +1,3 @@
-import { expect } from "vitest";
 import type { Insertable } from "kysely";
 import type { Gifs } from "@/database";
 

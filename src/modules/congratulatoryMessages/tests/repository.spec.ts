@@ -2,17 +2,11 @@ import createTestDatabase from "@tests/utils/createTestDatabase";
 import { createFor, selectAllFor } from "@tests/utils/records";
 import buildRepository from "../repository";
 import { repositoryTestSetup } from "./repositoryTestSetup";
-
-import {
-  congratulatoryMsgFactory,
-  congratulatoryMsgMatcher,
-  congratulatoryMsgFactoryFull,
-} from "./utils";
+import { congratulatoryMsgFactory } from "./utils";
 
 const db = await createTestDatabase();
 const repository = buildRepository(db);
 const createCongratulatoryMsgRecords = createFor(db, "congratulatoryMessages");
-const selectCongratulatoryMsg = selectAllFor(db, "congratulatoryMessages");
 
 afterAll(() => db.destroy());
 
@@ -115,7 +109,6 @@ describe("findAll", () => {
 //       throw new Error("congratulatoryMessagesData is undefined.");
 //     }
 
-//     const dataInDatabase = await selectCongratulatoryMsg();
 //     expect(dataInDatabase).toEqual([congratulatoryMessagesData]);
 //   });
 // });

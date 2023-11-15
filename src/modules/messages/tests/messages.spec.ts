@@ -3,7 +3,6 @@ import supertest from "supertest";
 import createApp from "@/app";
 import { selectAllFor } from "@tests/utils/records";
 import getUsersMsg from "../utils/getUsersMsg";
-
 import { sendCongratulatoryMessage } from "../../../../discordBot/discordBot";
 
 const db = await createTestDatabase();
@@ -45,10 +44,10 @@ describe("POST", () => {
       channelId: "testChannelId",
     };
 
-    const { body } = await supertest(app).post("/messages").send(data);
+    await supertest(app).post("/messages").send(data);
 
     const sendCongratulatoryMessageSpy = vi.fn(sendCongratulatoryMessage);
-    const result = sendCongratulatoryMessageSpy(data.channelId, data.username);
+    sendCongratulatoryMessageSpy(data.channelId, data.username);
 
     expect(sendCongratulatoryMessageSpy).toHaveBeenCalledWith(
       data.channelId,

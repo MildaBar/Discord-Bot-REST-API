@@ -4,7 +4,6 @@ import buildRepository from "./repository";
 import * as schema from "./schema";
 import { jsonRoute } from "@/utils/middleware";
 import { Database } from "@/database";
-import { update } from "lodash";
 
 export default (db: Database) => {
   const router = Router();

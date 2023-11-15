@@ -39,7 +39,7 @@ describe("insertCongratulatoryMessage", () => {
     const timestamp = "2023-11-07T08:32:15.182Z";
     const userId = 1;
 
-    const appendData = await insertCongratulatoryMessage(
+    await insertCongratulatoryMessage(
       gifId,
       messageTemplateId,
       sprintId,
