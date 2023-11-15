@@ -80,7 +80,7 @@ To set up the project, follow these steps:
 
     - Get all congratulatory message templates.
 
-  - **PATCH /templates/:id**
+  - **PATCH /templates**
 
     - Update a congratulatory message template.
     - **NOTE:** Include the template id and data you want to update in the request body in JSON format.
@@ -92,7 +92,7 @@ To set up the project, follow these steps:
       }
       ```
 
-  - **DELETE /templates/:id**
+  - **DELETE /templates**
     - Delete a congratulatory message template.
     - **NOTE:** Include the template id in the request body in JSON format.
     - **Example:**
@@ -107,11 +107,12 @@ To set up the project, follow these steps:
   - **POST /sprints**
 
     - Create a sprint.
-    - **NOTE:** Include the message details in the request body in JSON format with username, sprintCode, and channelId
+    - **NOTE:** Include the sprint details in the request body in JSON format with sprintCode, and sprintTitle.
     - **Example:**
       ```json
       {
-        "template": "Congratulations on your success! You're unstoppable!🎉"
+        "sprintCode": "WD-3.1",
+        "sprintTitle": "Node.js and Relational Databases"
       }
       ```
 
@@ -119,7 +120,7 @@ To set up the project, follow these steps:
 
     - Get all sprints.
 
-  - **PATCH /sprints/:id**
+  - **PATCH /sprints**
 
     - Update a sprint.
     - **NOTE:** Include the sprint id and data you want to update in the request body in JSON format.
@@ -131,7 +132,7 @@ To set up the project, follow these steps:
       }
       ```
 
-  - **DELETE /sprints/:id**
+  - **DELETE /sprints**
     - Delete a sprint.
     - **NOTE:** Include the sprint id in the request body in JSON format.
     - **Example:**
