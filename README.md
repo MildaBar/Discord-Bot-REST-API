@@ -44,14 +44,14 @@ npm run coverage
 - POST /messages
   <p>Send a congratulatory message to a user on Discord.</p>
   > Note: Include the message details in the request body in JSON format with username, sprintCode, and channelId
-  > <p>Example:</p>
-  > ```json
-  > {
-  >   "username": "johnjoe",
-  >   "sprintCode": "WD-1.2",
-  >   "channelId": "1234567891011121314"
-  > }
-  > ```
+  <p><em><strong>Example:</strong></em></p>
+  ```bash
+  {
+    "username": "johnjoe",
+    "sprintCode": "WD-1.2",
+    "channelId": "1234567891011121314"
+  }
+  ```
 
 - GET /messages
   <p>Get a list of all congratulatory messages.</p>
