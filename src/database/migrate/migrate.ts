@@ -5,7 +5,7 @@ import SQLite, { type Database } from "better-sqlite3";
 import { FileMigrationProvider, Kysely, SqliteDialect } from "kysely";
 import { migrateToLatest } from ".";
 
-// path to the migration file
+// path to the migration files
 const MIGRATIONS_PATH = "../migrations";
 
 // initialize the database using SQLite dialect and the specified url

@@ -18,7 +18,7 @@ afterEach(async () => {
 });
 
 describe("insertCongratulatoryMessage", () => {
-  it("should append meta data to insertCongratulatoryMessage table", async () => {
+  it("should append meta data to congratulatoryMessage table", async () => {
     await repositoryTestSetup(db);
 
     await createCongratulatoryMsgRecord([

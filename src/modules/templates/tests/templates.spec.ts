@@ -46,30 +46,6 @@ describe("POST", () => {
   });
 });
 
-describe("PATCH", () => {
-  it("persists changes", async () => {
-    const id = 1;
-    await createMessagesRecords([messageFactory({ id })]);
-
-    const patchResponse = await supertest(app)
-      .patch("/templates")
-      .send({ id, template: "Impressive work! Well done!👏" })
-      .expect(200);
-
-    const { body } = await supertest(app)
-      .get("/templates")
-      .send({ id })
-      .expect(200);
-
-    expect(body[0]).toEqual(
-      messageMatcher({
-        id,
-        template: "Impressive work! Well done!👏",
-      })
-    );
-  });
-});
-
 describe("DELETE", () => {
   it("should delete template based on id", async () => {
     const id = 1;

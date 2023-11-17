@@ -5,13 +5,18 @@ export async function addSprintCodes(
   sprintTitles: string[],
   db: Database
 ) {
-  const existingData = await db.selectFrom("sprints").selectAll().execute();
-  if (existingData.length === 0) {
+  const existingSprintData = await db
+    .selectFrom("sprints")
+    .selectAll()
+    .execute();
+
+  if (existingSprintData.length === 0) {
     const sprintCodeObjects = sprintCodes.map((sprintCode, index) => ({
       id: index + 1,
       sprintCode,
       sprintTitle: sprintTitles[index],
     }));
+
     const insertData = await db
       .insertInto("sprints")
       .values(sprintCodeObjects)

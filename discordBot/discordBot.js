@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { Client, GatewayIntentBits } from "discord.js";
-import getRandomGif from "@/modules/messages/utils/getRandomGif";
+import getRandomGif from "@/modules/messages/services/getRandomGif";
 
 const client = new Client({
   intents: [

@@ -1,26 +1,28 @@
 import { Database } from "@/database";
 
 export async function addMessages(templates: string[], db: Database) {
-  const existingData = await db
+  const existingTemplateData = await db
     .selectFrom("messageTemplates")
     .selectAll()
     .execute();
-  if (existingData.length === 0) {
+
+  if (existingTemplateData.length === 0) {
     const templateObjects = templates.map((template, index) => ({
       id: index + 1,
       template,
     }));
-    const insertData = await db
+
+    const insertTemplateData = await db
       .insertInto("messageTemplates")
       .values(templateObjects)
       .returningAll()
       .execute();
 
-    if (insertData.length > 0) {
+    if (insertTemplateData.length > 0) {
       console.log("addMessagesTemplate: Messages appended successfully.");
     }
 
-    return insertData;
+    return insertTemplateData;
   }
   console.log(
     "addMessagesTemplate: Data already exists. Skipping data insertion."
