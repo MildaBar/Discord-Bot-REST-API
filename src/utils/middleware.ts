@@ -10,7 +10,7 @@ type JsonHandler<T extends object> = (
   req: Request,
   res: Response,
   next: NextFunction
-) => Promise<T>;
+) => Promise<T | undefined>;
 
 /**
  * Custom stringify function to handle circular references during JSON serialization.
@@ -58,7 +58,7 @@ export function jsonRoute<T extends object>(
       const result = await handler(req, res, next);
 
       // check if headers have been sent, if yes, skip sending the response
-      if (res.headersSent) {
+      if (res.headersSent || result === undefined) {
         return next();
       }
 
