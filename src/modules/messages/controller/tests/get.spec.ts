@@ -18,8 +18,8 @@ afterEach(async () => {
   await db.deleteFrom("messageTemplates").execute();
 });
 
-describe("GET", () => {
-  it("GET / username - should call getUsersMsg ", async () => {
+describe("GET / username", () => {
+  it("should call getUsersMsg ", async () => {
     await createUsersRecords([
       usersFactory({
         username: "johnjoe",
@@ -34,32 +34,27 @@ describe("GET", () => {
     expect(getUsersMsgSpy).toHaveBeenCalled();
   });
 
-  it("GET / - should return all messages if username not provided", async () => {
+  it("should return 404 if user not found in the database", async () => {
+    const { body } = await supertest(app)
+      .get("/messages?username=nameNotInDatabase")
+      .expect(404);
+
+    expect(body).toEqual({
+      message: "nameNotInDatabase is not found.",
+    });
+  });
+});
+
+describe("GET / sprint", () => {
+  it("should return 404 if sprintCode is not found in the database");
+});
+
+describe("GET /", () => {
+  it("should return all messages if username not provided", async () => {
     const mesagesInDatabase = await selectMessages();
 
     const { body } = await supertest(app).get("/messages").expect(200);
 
     expect(body).toEqual(mesagesInDatabase);
-  });
-});
-
-describe("POST", () => {
-  it("POST / should send congratulatory message and return success", async () => {
-    const data = {
-      username: "testUser",
-      sprintCode: "SPR-001",
-      channelId: "testChannelId",
-    };
-
-    await supertest(app).post("/messages").send(data);
-
-    const sendCongratulatoryMessageSpy = vi.fn(sendCongratulatoryMessage);
-    sendCongratulatoryMessageSpy(data.channelId, data.username);
-
-    expect(sendCongratulatoryMessageSpy).toHaveBeenCalledWith(
-      data.channelId,
-      data.username
-    );
-    expect(sendCongratulatoryMessageSpy).toHaveBeenCalled();
   });
 });

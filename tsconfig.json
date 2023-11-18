@@ -8,8 +8,15 @@
     "paths": {
       "@/*": ["./src/*"],
       "@tests/*": ["./tests/*"]
-    }
+    },
+    "types": [
+      "node",
+      "express",
+      "./src/modules/messages/middleware/custom.d.ts"
+    ]
   },
+
+  "include": ["./src/modules/messages/middleware/middleware.ts"],
 
   "references": [
     {
