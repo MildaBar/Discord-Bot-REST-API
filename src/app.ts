@@ -3,6 +3,12 @@ import express from "express";
 import { type Database } from "./database";
 import getGifs from "./modules/giphy/getGifUrl";
 
+// middleware
+import {
+  errorHandler,
+  handleErrors,
+} from "@/modules/messages/middleware/errorHandler";
+
 // messages
 import getMessageTemplates from "@/modules/messages/controller/get";
 import postMessageTemplates from "@/modules/messages/controller/post";
@@ -43,6 +49,9 @@ export default function createApp(db: Database) {
   app.use("/sprints", deleteSprints(db));
   app.use("/sprints", patchSprints(db));
   app.use("/sprints", postSprints(db));
+
+  /* middleware */
+  app.use(errorHandler, handleErrors);
 
   return app;
 }

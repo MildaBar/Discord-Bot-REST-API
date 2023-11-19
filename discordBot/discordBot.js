@@ -14,7 +14,11 @@ client.on("ready", () => {
   console.log("bot is ready");
 });
 
-export const sendCongratulatoryMessage = async (channelId, msg) => {
+export const sendCongratulatoryMessage = async (
+  channelId,
+  msg,
+  getRandomGif
+) => {
   try {
     const channel = client.channels.cache.get(channelId);
     if (channel) {
@@ -24,11 +28,15 @@ export const sendCongratulatoryMessage = async (channelId, msg) => {
       return true;
     } else {
       console.error("Channel not found");
-      return false;
+      const discordError = new Error("Channel not found");
+      discordError.discordError = true;
+      throw discordError;
     }
   } catch (error) {
     console.error("Error senging congratulatory message:", error);
-    return false;
+    const discordError = new Error("Error senging congratulatory message");
+    discordError.discordError = true;
+    throw discordError;
   }
 };
 

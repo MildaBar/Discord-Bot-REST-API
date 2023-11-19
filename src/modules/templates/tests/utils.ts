@@ -20,6 +20,6 @@ export const messageMatcher = (
   overrides: Partial<Insertable<MessageTemplates>> = {}
 ) => ({
   id: expect.any(Number),
-  ...overrides,
   ...messageFactory(overrides),
+  ...overrides,
 });

@@ -3,7 +3,10 @@ import { StatusCodes } from "http-status-codes";
 import { Database } from "@/database";
 import { jsonRoute } from "@/utils/middleware";
 import buildMsgRepository from "../repository";
-import { checkParameters } from "../middleware/middleware";
+import { checkParameters } from "../middleware/validateParameters";
+import NotFoundError from "@/utils/errors/NotFoundError";
+import BadRequestError from "@/utils/errors/BadRequestError";
+import { errorHandler } from "../middleware/errorHandler";
 
 // import services
 import getUsersMsg from "../services/getUsersMsg";
@@ -15,7 +18,7 @@ export default (db: Database) => {
 
   router.route("/").get(
     checkParameters,
-    jsonRoute(async (req, res) => {
+    jsonRoute(async (req, res, next) => {
       try {
         const messagesTarget = req.messagesTarget;
 
@@ -33,19 +36,18 @@ export default (db: Database) => {
           const allMessages = await messages.findAll();
 
           if (!allMessages) {
-            return res
-              .status(StatusCodes.NOT_FOUND)
-              .json({ error: "Messages not found" });
+            throw new NotFoundError("Messages not found");
           }
 
           return res.status(StatusCodes.OK).json(allMessages);
         } else {
-          return res
-            .status(StatusCodes.BAD_REQUEST)
-            .json({ error: "Invalid request, missing or invalid parameters." });
+          throw new BadRequestError(
+            "Invalid request, missing or invalid parameters."
+          );
         }
       } catch (error) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
+        console.error("Error in GET /messages route:", error);
+        errorHandler(error, req, res, next);
       }
     })
   );

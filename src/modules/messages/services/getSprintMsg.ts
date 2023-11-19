@@ -25,7 +25,5 @@ export default async function getSprintMsg(sprintCode: string, db: Database) {
     const templatesArray = templates.map((template) => template?.template);
 
     return templatesArray;
-  } else {
-    console.log("No sprint ID found.");
   }
 }
