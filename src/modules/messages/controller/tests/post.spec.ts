@@ -3,6 +3,7 @@ import supertest from "supertest";
 import createApp from "@/app";
 import { selectAllFor, createFor } from "@tests/utils/records";
 import { sendCongratulatoryMessage } from "../../../../../discordBot/discordBot";
+import getRandomGif from "../../services/getRandomGif";
 
 const db = await createTestDatabase();
 const app = createApp(db);
@@ -27,11 +28,18 @@ describe("POST", () => {
     await supertest(app).post("/messages").send(data);
 
     const sendCongratulatoryMessageSpy = vi.fn(sendCongratulatoryMessage);
-    sendCongratulatoryMessageSpy(data.channelId, data.username);
+    const getRandomGifSpy = vi.fn(getRandomGif);
+
+    await sendCongratulatoryMessageSpy(
+      data.channelId,
+      data.username,
+      getRandomGifSpy
+    );
 
     expect(sendCongratulatoryMessageSpy).toHaveBeenCalledWith(
       data.channelId,
-      data.username
+      data.username,
+      getRandomGifSpy
     );
     expect(sendCongratulatoryMessageSpy).toHaveBeenCalled();
   });

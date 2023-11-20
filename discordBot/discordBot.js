@@ -28,15 +28,11 @@ export const sendCongratulatoryMessage = async (
       return true;
     } else {
       console.error("Channel not found");
-      const discordError = new Error("Channel not found");
-      discordError.discordError = true;
-      throw discordError;
+      return false;
     }
   } catch (error) {
     console.error("Error senging congratulatory message:", error);
-    const discordError = new Error("Error senging congratulatory message");
-    discordError.discordError = true;
-    throw discordError;
+    return false;
   }
 };
 

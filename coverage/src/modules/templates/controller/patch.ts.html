@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/modules/congratulatoryMessages/utils/getGifId.ts</title>
+    <title>Code coverage report for src/modules/templates/controller/patch.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/modules/congratulatoryMessages/utils</a> getGifId.ts</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/modules/templates/controller</a> patch.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.47% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/19</span>
+                <span class='fraction'>24/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.47% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/19</span>
+                <span class='fraction'>24/28</span>
             </div>
         
             
@@ -82,12 +82,28 @@
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -95,31 +111,42 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type { Database } from "@/database";
-import buildRepository from "../../gifs/repository";
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Router } from "express";
+import { StatusCodes } from "http-status-codes";
+import buildRepository from "../repository";
+import * as schema from "../schema";
+import { jsonRoute } from "@/utils/middleware";
+import { Database } from "@/database";
 &nbsp;
-export default async function getGif(db: Database, gifUrl: string) {
-  const gifRepo = buildRepository(db, gifUrl);
+export default (db: Database) =&gt; {
+  const router = Router();
+  const template = buildRepository(db);
 &nbsp;
-  let gifId = null;
+  router.route("/").patch(
+    jsonRoute(async (req, res) =&gt; {
+      const id = schema.parseId(req.body.id);
+      const bodyPatch = schema.parseUpdateable(req.body);
+      const updatedTemplate = await template.update(id, bodyPatch);
 &nbsp;
-  const gifData = await gifRepo.findUrl(gifUrl);
+      if (!updatedTemplate) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >        return res</span>
+<span class="cstat-no" title="statement not covered" >          .status(StatusCodes.NOT_FOUND)</span>
+<span class="cstat-no" title="statement not covered" >          .json({ error: "Template not found" });</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
 &nbsp;
-  if (!gifData) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >    const createGif = await gifRepo.create({ gifUrl });</span>
-<span class="cstat-no" title="statement not covered" >    gifId = createGif?.id;</span>
-  } else {
-    gifId = gifData.id;
-  }
-&nbsp;
-  return gifId;
-}
+      return updatedTemplate;
+    })
+  );
+  return router;
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -127,7 +154,7 @@ export default async function getGif(db: Database, gifUrl: string) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-16T09:19:52.420Z
+                at 2023-11-20T09:35:07.800Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

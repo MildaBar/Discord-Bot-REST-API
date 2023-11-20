@@ -19,17 +19,13 @@ afterEach(async () => {
 afterAll(() => db.destroy());
 
 describe("POST", () => {
-  it("should return 201 and created message template", async () => {
-    const postMessage = {
-      template: "Impressive work! Well done!👏",
-    };
-
+  it("should return 201 and created message templates", async () => {
     const { body } = await supertest(app)
       .post("/templates")
-      .send(postMessage)
+      .send(messageFactory())
       .expect(201);
-    console.log("Received Body:", body);
 
-    expect(body).toContainEqual(messageMatcher());
+    const messagesInDatabase = selectMessagesRecords();
+    expect(messagesInDatabase).contains(body);
   });
 });

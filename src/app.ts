@@ -51,7 +51,7 @@ export default function createApp(db: Database) {
   app.use("/sprints", postSprints(db));
 
   /* middleware */
-  app.use(errorHandler, handleErrors);
+  app.use(errorHandler);
 
   return app;
 }
