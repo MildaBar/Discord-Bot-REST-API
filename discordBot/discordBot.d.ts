@@ -4,7 +4,7 @@ declare module "./discordBot" {
   export function sendCongratulatoryMessage(
     channelId: string,
     msg: string,
-    getRandomGif: () => Promise<string>
+    gif: () => string
   ): Promise<boolean>;
 }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1700472915115" clover="3.2.0">
-  <project timestamp="1700472915117" name="All files">
+<coverage generated="1700499916448" clover="3.2.0">
+  <project timestamp="1700499916449" name="All files">
     <metrics statements="1741" coveredstatements="1454" conditionals="179" coveredconditionals="143" methods="101" coveredmethods="79" elements="2021" coveredelements="1676" complexity="0" loc="1741" ncloc="1741" packages="26" files="53" classes="53"/>
     <package name="discordBot">
       <metrics statements="39" coveredstatements="35" conditionals="5" coveredconditionals="4" methods="1" coveredmethods="1"/>

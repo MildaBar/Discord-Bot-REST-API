@@ -64,7 +64,7 @@ export default (db: Database) => {
         const sendMsg = await sendCongratulatoryMessage(
           channelId,
           congratulatoryMessage,
-          getRandomGif
+          gif
         );
 
         if (sendMsg) {

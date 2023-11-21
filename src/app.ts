@@ -4,10 +4,7 @@ import { type Database } from "./database";
 import getGifs from "./modules/giphy/getGifUrl";
 
 // middleware
-import {
-  errorHandler,
-  handleErrors,
-} from "@/modules/messages/middleware/errorHandler";
+import { errorHandler } from "@/modules/messages/middleware/errorHandler";
 
 // messages
 import getMessageTemplates from "@/modules/messages/controller/get";
@@ -29,7 +26,7 @@ export default function createApp(db: Database) {
   // initialize the express application
   const app = express();
 
-  // middleware
+  /* middleware */
   app.use(express.json());
 
   app.use("/random-gif", getGifs);
