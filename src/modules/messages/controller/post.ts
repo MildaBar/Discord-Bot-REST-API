@@ -53,8 +53,9 @@ export default (db: Database) => {
         }
 
         // GET GIF
-        const gif = await getRandomGif();
-        if (!gif) {
+        const gifUrl = async () => getRandomGif();
+        // if function returns falsy value
+        if (!(await gifUrl())) {
           throw new NotFoundError("GIF not found.");
         }
 
@@ -64,12 +65,12 @@ export default (db: Database) => {
         const sendMsg = await sendCongratulatoryMessage(
           channelId,
           congratulatoryMessage,
-          gif
+          gifUrl
         );
 
         if (sendMsg) {
           // GET IDs
-          const gifIdPromise = getGifId(db, gif);
+          const gifIdPromise = getGifId(db, gifUrl);
           const msgIdPromise = getMsgId(db, randomMessage);
           const sprintIdPromise = getSprintsId(db, sprintCode);
           const userIdPromise = getUsersId(db, username);

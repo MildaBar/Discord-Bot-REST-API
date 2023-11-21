@@ -14,10 +14,11 @@ client.on("ready", () => {
   console.log("bot is ready");
 });
 
-export const sendCongratulatoryMessage = async (channelId, msg, gif) => {
+export const sendCongratulatoryMessage = async (channelId, msg, gifUrl) => {
   try {
     const channel = client.channels.cache.get(channelId);
     if (channel) {
+      const gif = await gifUrl();
       await channel.send(msg);
       await channel.send(gif);
       return true;
@@ -26,7 +27,7 @@ export const sendCongratulatoryMessage = async (channelId, msg, gif) => {
       return false;
     }
   } catch (error) {
-    console.error("Error senging congratulatory message:", error);
+    console.error("Error sending congratulatory message:", error);
     return false;
   }
 };

@@ -1,7 +1,11 @@
 import type { Database } from "@/database";
 import buildRepository from "../../gifs/repository";
 
-export default async function getGif(db: Database, gifUrl: string) {
+export default async function getGif(
+  db: Database,
+  gifUrlProvider: () => Promise<string>
+) {
+  const gifUrl = await gifUrlProvider();
   const gifRepo = buildRepository(db, gifUrl);
 
   let gifId = null;
