@@ -34,7 +34,6 @@ describe("insertCongratulatoryMessage", () => {
 
     const gifId = 1;
     const messageTemplateId = 1;
-
     const sprintId = 1;
     const timestamp = "2023-11-07T08:32:15.182Z";
     const userId = 1;

@@ -1,13 +1,9 @@
 import supertest from "supertest";
 import createTestDatabase from "@tests/utils/createTestDatabase";
-import { createFor } from "@tests/utils/records";
-import { messageFactory, messageMatcher } from "../../tests/utils";
 import createApp from "@/app";
 
 const db = await createTestDatabase();
 const app = createApp(db);
-
-const createMessagesRecords = createFor(db, "messageTemplates");
 
 afterEach(async () => {
   // clear the tested table after each test

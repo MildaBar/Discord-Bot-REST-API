@@ -3,12 +3,9 @@ import supertest from "supertest";
 import createApp from "@/app";
 import { selectAllFor, createFor } from "@tests/utils/records";
 import { sendCongratulatoryMessage } from "../../../../../discordBot/discordBot";
-import getRandomGif from "../../services/getRandomGif";
 
 const db = await createTestDatabase();
 const app = createApp(db);
-const selectMessages = selectAllFor(db, "messageTemplates");
-const createUsersRecords = createFor(db, "users");
 afterAll(() => db.destroy());
 
 afterEach(async () => {
@@ -28,18 +25,14 @@ describe("POST", () => {
     await supertest(app).post("/messages").send(data);
 
     const sendCongratulatoryMessageSpy = vi.fn(sendCongratulatoryMessage);
-    const getRandomGifSpy = vi.fn(getRandomGif);
+    const gif = "test url";
 
-    await sendCongratulatoryMessageSpy(
-      data.channelId,
-      data.username,
-      getRandomGifSpy
-    );
+    await sendCongratulatoryMessageSpy(data.channelId, data.username, gif);
 
     expect(sendCongratulatoryMessageSpy).toHaveBeenCalledWith(
       data.channelId,
       data.username,
-      getRandomGifSpy
+      gif
     );
     expect(sendCongratulatoryMessageSpy).toHaveBeenCalled();
   });

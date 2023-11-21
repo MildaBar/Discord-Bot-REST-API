@@ -1,13 +1,12 @@
 import supertest from "supertest";
 import createTestDatabase from "@tests/utils/createTestDatabase";
-import { createFor, selectAllFor } from "@tests/utils/records";
-import { messageFactory, messageMatcher } from "../../tests/utils";
+import { selectAllFor } from "@tests/utils/records";
+import { messageFactory } from "../../tests/utils";
 import createApp from "@/app";
 
 const db = await createTestDatabase();
 const app = createApp(db);
 
-const createMessagesRecords = createFor(db, "messageTemplates");
 const selectMessagesRecords = selectAllFor(db, "messageTemplates");
 
 afterEach(async () => {

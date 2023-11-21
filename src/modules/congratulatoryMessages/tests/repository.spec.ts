@@ -1,5 +1,5 @@
 import createTestDatabase from "@tests/utils/createTestDatabase";
-import { createFor, selectAllFor } from "@tests/utils/records";
+import { createFor } from "@tests/utils/records";
 import buildRepository from "../repository";
 import { repositoryTestSetup } from "./repositoryTestSetup";
 import { congratulatoryMsgFactory } from "./utils";
@@ -7,7 +7,6 @@ import { congratulatoryMsgFactory } from "./utils";
 const db = await createTestDatabase();
 const repository = buildRepository(db);
 const createCongratulatoryMsgRecords = createFor(db, "congratulatoryMessages");
-const selectCongratulatoryMsg = selectAllFor(db, "congratulatoryMessages");
 
 afterAll(() => db.destroy());
 

@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
 import buildRepository from "../repository";
-import * as schema from "../schema";
 import { jsonRoute } from "@/utils/middleware";
 import { Database } from "@/database";
 

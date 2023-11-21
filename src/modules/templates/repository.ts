@@ -1,6 +1,6 @@
 import type { Insertable, Selectable, Updateable } from "kysely";
 import { keys } from "./schema";
-import type { MessageTemplates, Database, DB } from "@/database";
+import type { MessageTemplates, Database } from "@/database";
 
 const TABLE = "messageTemplates";
 type Row = MessageTemplates;
